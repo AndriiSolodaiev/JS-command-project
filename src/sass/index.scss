@@ -1,0 +1,19 @@
+@import './utils/variables';
+@import './utils/visually-hidden';
+
+@import './base/common';
+@import './base/container';
+
+
+
+@import './components/backdrop';
+@import './components/button';
+@import './components/active-button';
+@import './components/mdl-btn';
+@import './components/mw-movie';
+@import './components/pagination';
+
+
+@import './layout/header';
+@import './layout/gallery';
+@import './layout/footer';
