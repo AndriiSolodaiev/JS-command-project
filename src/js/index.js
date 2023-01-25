@@ -5,3 +5,4 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3/"
 import { refs } from './refs';
 import { createGenresObj } from './functions/genres';
 createGenresObj()
+import '../js/requests/search';
