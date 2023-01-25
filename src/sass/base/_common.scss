@@ -27,9 +27,13 @@ img {
 }
 
 button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
     font-family: inherit;
-    
 }
+
 a {
     text-decoration: none;
         font-style: normal;

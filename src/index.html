@@ -15,21 +15,38 @@
       <div class="header__logo">
         <a class="logo" href="./index.html" lang="en">
           <svg class="logo__icon" width="24" height="24">
-            <use href="./img/sprite.svg#icon-logo"></use>
+            <use href="./sass/img/sprite.svg#icon-logo"></use>
           </svg>
           <p class="logo__title">Filmoteka</p>
         </a>
       </div>
-      <ul>
-        <li><a href="">bfdbfb</a></li>
-        <li><a href="">bfbfgb</a></li>
-      </ul>
+      <nav class="menu">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <a href="./index.html" target="_self" class="menu__link menu__link--current">HOME</a>
+          </li>
+          <li class="menu__item">
+            <a target="#" class="menu__link menu__link-js">SIGN IN</a>
+          </li>
+        </ul>
+      </nav>
     </div>
+    <form class="form" name="search-form" autocomplete="off" novalidate>
+      <div class="form__box flex">
+        <input class="form__input" type="text" name="search_user" placeholder="Movie search" />
+        <button class="form__btn" aria-label="movie-search" type="submit">
+          <svg class="form__icon" width="12" height="12">
+            <use class="form__svg" href="./sass/img/sprite.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </header>
 
-    <include src="./partials/mw-movie.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/mw-footer.html"></include>
-    <script type="module" src="./js/index.js"></script>
+  <include src="./partials/mw-movie.html"></include>
+  <include src="./partials/footer.html"></include>
+  <include src="./partials/mw-footer.html"></include>
+  <script type="module" src="./js/index.js"></script>
 </body>
 
 </html>
