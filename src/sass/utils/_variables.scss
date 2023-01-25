@@ -8,3 +8,49 @@
 
     --transition-prop: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+$main-font: 'Roboto', sans-serif;
+$team-font: 'Fredericka the Great', cursive;
+
+// Text color
+$black: #000000;
+$white: #ffffff;
+$orange: #ff6b08;
+$orange-button: #ff6b01;
+$grey: #545454;
+$grey-social: #f7f7f7;
+$grey-card-color: #8c8c8c;
+$red: #ff001b;
+$yellow: #ffff00;
+$btn-disable: #893d3d;
+$overlay-header-color: rgba(0, 0, 0, 0.56);
+// Background color
+$backdrop: rgba(2, 0, 36, 0.6);
+$grey-footer-background: #f7f7f7;
+$bg-team-member: rgba(33, 66, 151, 0.9);
+
+// Border color
+
+// Shadows
+$box-shadow-color: #ff6b0199;
+$shadow-modal: 5px 6px 4px rgba(255, 103, 1, 0.765);
+$shadow-team-modal: 0px 1px 3px rgba(255, 107, 1, 0.6),
+    0px 1px 1px rgba(255, 107, 8, 0.37), 0px 2px 1px rgba(255, 107, 1, 0.6);
+$shadow-team-member: 15px -4px 25px 3px rgba(0, 0, 0, 0.56);
+
+
+// Flex-basis
+
+$indent: 32px;
+$elements: 3;
+
+// Breakpoints
+$mobile: 320px;
+$mobile-mid: 480px;
+$tablet: 768px;
+$desktop: 1280px;
+
+//animation
+$transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+$animation-modal: 250ms ease-in-out 20ms;
+$time-cubic: 300ms;
