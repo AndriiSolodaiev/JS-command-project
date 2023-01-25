@@ -49,13 +49,13 @@
     }
 }
 
-// .header__container {
-//     max-height: 24px;
+.header__container {
+    max-height: 24px;
 
-//     @media screen and (min-width:$tablet) {
-//         max-height: 35px;
-//     }
-// }
+    @media screen and (min-width:$tablet) {
+        max-height: 35px;
+    }
+}
 
 .header__logo {
     margin-right: auto;}

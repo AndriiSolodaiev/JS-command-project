@@ -16,9 +16,6 @@
     color: $white;
     font-size: 12px;
     line-height: 1.16;
-    // &:last-child {
-    //     margin-left: 40px;
-    // }
 }
 
 .menu__link {
@@ -41,9 +38,7 @@
         height: 3px;
         background: $red;
         opacity: 0;
-
         transition-duration: 200ms;
-        // border-radius: 2px;
     }
 
     &:hover::after {
