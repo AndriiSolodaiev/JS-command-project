@@ -2,11 +2,11 @@ import { fetchGenres } from '../requests/fetchGenres';
 import { refs } from '../refs';
 export async function createGenresObj() {
   const data = await fetchGenres();
-  data.map(({ id, name }) => (genresObj[id] = name));
+  data.map(({ id, name }) => (refs.genresObj[id] = name));
   return;
 }
 // ця функція створює такий об'єкт
-// дістати можна - genresObj[id]
+// дістати можна - refs.genresObj[id]
 // genresObj = {
 //   12: 'Adventure',
 //   14: 'Fantasy',
