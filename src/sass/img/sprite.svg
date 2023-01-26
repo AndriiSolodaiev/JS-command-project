@@ -18,5 +18,7 @@
     <symbol id="icon-arrow-right" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
     </symbol>
+    
+    
   </defs>
 </svg>
