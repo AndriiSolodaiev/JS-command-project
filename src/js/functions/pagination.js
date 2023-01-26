@@ -1,5 +1,5 @@
 import { PaginationService } from './paginationService.js';
-import { refs } from '../refs';
+import { refs } from '../data';
 
 export function markupPagination(currentPage, totalPage) {
   let isMobile = false;

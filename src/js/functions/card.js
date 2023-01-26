@@ -1,25 +1,20 @@
-import { refs } from "../refs";
+import { refs } from '../data';
 
 export function createMoviesCardMarkup(movies) {
-  const {
-    original_title,
-    poster_path,
-    vote_average,
-    genre_ids,
-    release_date,
-  } = movies;
-        let posterPath = ``;
-        if (poster_path) {
-          posterPath = `https://image.tmdb.org/t/p/w400/${poster_path}`;
-        } else {
-          posterPath =
-            'https://cdn.create.vista.com/api/media/small/324908572/stock-vector-3d-cinema-film-strip-in';
+  const { original_title, poster_path, vote_average, genre_ids, release_date } =
+    movies;
+  let posterPath = ``;
+  if (poster_path) {
+    posterPath = `https://image.tmdb.org/t/p/w400/${poster_path}`;
+  } else {
+    posterPath =
+      'https://cdn.create.vista.com/api/media/small/324908572/stock-vector-3d-cinema-film-strip-in';
   }
-  let linea = '|'
+  let linea = '|';
   if (genre_ids && release_date) {
-    linea = ''
+    linea = '';
   }
-        return `
+  return `
             <img
                 class='films-gallery__img'
                 src='${posterPath}'
@@ -35,8 +30,8 @@ export function createMoviesCardMarkup(movies) {
                 <span class='films-gallery__rate'>${vote_average.toFixed(1)}</p>
                 </div>
             </div>`;
-};
-      
+}
+
 // export function setMovieGenresNames(array) {
 //   let genresCard = ''
 //    if (array.length > 2) {
@@ -48,12 +43,11 @@ export function createMoviesCardMarkup(movies) {
 //      console.log(refs.genresObj)
 //        return refs.genresObj[element]
 //       });
-    
-     
+
 //   }
 //   return genresCard;
 // }
- 
+
 export function setMovieGenresNames(movies, genresList) {
   movies.forEach(movie => {
     movie.release_date = movie.release_date?.slice(0, 4);

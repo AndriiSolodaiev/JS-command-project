@@ -12,5 +12,11 @@
     <symbol id="icon-logo" viewBox="0 0 32 32">
       <path d="M26.427 2.667H5.574a2.907 2.907 0 0 0-2.907 2.907v20.853a2.907 2.907 0 0 0 2.907 2.907v0h20.853a2.907 2.907 0 0 0 2.907-2.907v0V5.574a2.907 2.907 0 0 0-2.907-2.907v0zm-17.094 0v26.667M22.667 2.667v26.667M2.667 16h26.667M2.667 9.333h6.667M2.667 22.667h6.667m13.333 0h6.667M22.667 9.333h6.667"/>
     </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M25.334 16h-18.668M16 25.334l-9.334-9.334 9.334-9.334"></path>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
+    </symbol>
   </defs>
 </svg>
