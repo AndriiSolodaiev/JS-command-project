@@ -1,9 +1,18 @@
 import { fetchGenres } from '../requests/fetchGenres';
 import { refs } from '../refs';
 export async function createGenresObj() {
-  const data = await fetchGenres();
-  data.map(({ id, name }) => (refs.genresObj[id] = name));
-  return;
+  try {
+    const data = await fetchGenres();
+    data.map(async ({ id, name }) => await (refs.genresObj[id] = name));
+    // console.log(refs.genresObj);
+    return;
+  } catch {
+    errorMessage();
+    return;
+  }
+}
+function errorMessage() {
+  alert('запит не здійснений');
 }
 // ця функція створює такий об'єкт
 // дістати можна - refs.genresObj[id]

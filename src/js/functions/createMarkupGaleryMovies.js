@@ -1,14 +1,31 @@
 // в рядку 6 залишилося вставити функцію формування картки
+import { createMoviesCardMarkup } from './card';
+import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
+import { refs } from '../refs';
+import { createGenresObj } from './genres';
 
 export function createMarkupGaleryMovies(arr) {
   let markupGaleryMovies = arr
     .map(moviesCard => {
-      const markup = `<li class="movies__card" data-id=${moviesCard.id}>Функція картки f(obj), film-${moviesCard.title}</li>`;
+      const markup = `<li class="movies__card" data-id=${
+        moviesCard.id
+      }>${createMoviesCardMarkup(moviesCard)}</li>`;
       return markup;
     })
     .join('');
   markupGaleryMovies = `<ul class="movies">${markupGaleryMovies}</ul>`;
   return markupGaleryMovies;
+}
+
+export async function renderTrendingMoviesPerDay(page) {
+  const { results } = await fetchTrendingMoviesPerDay(page);
+  await createGenresObj();
+  console.log(refs.genresObj);
+  console.log(refs.genresObj[16]);
+  // треба зберегти в локальне сховище в поточну сторінку
+  const markup = await createMarkupGaleryMovies(results);
+  refs.moviesCollection.innerHTML = await markup;
+  return;
 }
 
 // для картки obj = {
