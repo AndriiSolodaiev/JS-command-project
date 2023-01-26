@@ -27,14 +27,14 @@
               <a href="./index.html" target="_self" class="menu__link menu__link--current">HOME</a>
             </li>
             <li class="menu__item">
-              <a target="#" class="menu__link menu__link-js">SIGN IN</a>
+              <a target="./mylibrary.html" class="menu__link">SIGN IN</a>
             </li>
           </ul>
         </nav>
       </div>
       <form class="form" name="search-form" autocomplete="off" novalidate>
-        <div class="form__box flex">
-          <input class="form__input" type="text" name="search_user" placeholder="Movie search" />
+        <div class="form__box">
+          <input class="form__input" type="text" name="search_user" placeholder="Movie search" id="search" />
           <button class="form__btn" aria-label="movie-search" type="submit">
             <svg class="form__icon" width="12" height="12">
               <use class="form__svg" href="./sass/img/sprite.svg#icon-search"></use>
@@ -42,6 +42,8 @@
           </button>
         </div>
       </form>
+      <span class="form__text-error">Search result not successful. Enter the correct movie name.
+      </span>
     </div>
   </header>
 

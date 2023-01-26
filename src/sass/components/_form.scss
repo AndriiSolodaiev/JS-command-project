@@ -2,8 +2,6 @@
     display: grid;
     position: relative;
     margin: 0 auto;
-
-
 }
 
 .form__box {
@@ -11,7 +9,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 280px;
-
     border-bottom: 0.5px solid $white;
     position: relative;
 
@@ -26,11 +23,10 @@
         margin-top: 41px;
     }
 
-    // new
     &:hover,
     &:focus {
-        animation: transition 1s ease-out;
-        border-bottom: 0.5px solid #ff6b08;
+        animation: $transition;
+        border-bottom: 0.5px solid $red;
 
     }
 
@@ -49,6 +45,12 @@
     border-bottom: 0.5px solid $white;
     position: relative;
 
+    &:hover,
+        &:focus {
+            animation: $transition;
+            border-bottom: 0.5px solid $red;
+        }
+
     &::placeholder {
         color: $white;
         font-size: 14px;
@@ -59,6 +61,9 @@
 }
 
 .form__text-error {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.14;
@@ -73,7 +78,6 @@
 }
 
 .form__btn {
-
     height: 25px;
     width: 25px;
     position: absolute;
@@ -86,20 +90,21 @@
 }
 
 .form__icon {
+    stroke: $white;
+    stroke-width: 3px;
+    fill: none;
 
     &:hover,
     &:focus {
-        transform: scale(1.6);
-        animation: transition 1s ease-out;
-        fill: $orange;
+        transform: scale(1.5);
+        animation: $transition;
+        fill: $red;
 
     }
 
 }
 
-// .form__svg{
-//   color: $orange;
-// }
+
 .is-hidden {
     display: none;
 }

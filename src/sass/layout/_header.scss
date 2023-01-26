@@ -50,6 +50,9 @@
 }
 
 .header__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-height: 24px;
 
     @media screen and (min-width:$tablet) {
