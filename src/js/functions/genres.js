@@ -1,10 +1,11 @@
 import { fetchGenres } from '../requests/fetchGenres';
-import { refs } from '../refs';
+// import { refs } from '../refs';
 export async function createGenresObj() {
   try {
+    const allGenres = {};
     const data = await fetchGenres();
-    data.map(async ({ id, name }) => await (refs.genresObj[id] = name));
-    // console.log(refs.genresObj);
+    data.map(async ({ id, name }) => await (allGenres[id] = name));
+    localStorage.setItem('genres', JSON.stringify(allGenres));
     return;
   } catch {
     errorMessage();
@@ -14,6 +15,7 @@ export async function createGenresObj() {
 function errorMessage() {
   alert('запит не здійснений');
 }
+
 // ця функція створює такий об'єкт
 // дістати можна - refs.genresObj[id]
 // genresObj = {

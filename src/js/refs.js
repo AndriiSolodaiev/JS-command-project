@@ -1,5 +1,4 @@
 export const refs = {
-  genresObj: {},
   page: 1,
   totalPage: 1000,
 

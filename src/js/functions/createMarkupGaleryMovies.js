@@ -19,12 +19,10 @@ export function createMarkupGaleryMovies(arr) {
 
 export async function renderTrendingMoviesPerDay(page) {
   const { results } = await fetchTrendingMoviesPerDay(page);
-  await createGenresObj();
-  console.log(refs.genresObj);
-  console.log(refs.genresObj[16]);
-  // треба зберегти в локальне сховище в поточну сторінку
   const markup = await createMarkupGaleryMovies(results);
   refs.moviesCollection.innerHTML = await markup;
+
+  localStorage.setItem('currentMovies', JSON.stringify(results));
   return;
 }
 
