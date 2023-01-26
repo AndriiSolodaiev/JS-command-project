@@ -1,0 +1,30 @@
+.film-colection {
+    padding: 60px 0;
+
+    @media screen and (min-width: 1280px) {
+    padding: 94px 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--indent);
+    }
+
+    &__item {
+        display: flex;
+        flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+
+        @media screen and (max-width: 767px) {
+            --items: 1;
+            }
+
+        @media screen and (min-width: 768px) {
+            --items: 2;
+            }
+
+        @media screen and (min-width: 1280px) {
+            --items: 3;
+        }
+    }
+}
