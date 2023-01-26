@@ -1,49 +1,40 @@
-function Pagination(currentPage, totalPage) {
-  const allPages = [];
-  let countFreeCell = 0;
-  let foundLastPage = false;
+import { PaginationService } from './paginationService.js';
+import { refs } from '../refs';
 
-  allPages.push(currentPage);
-  if (currentPage === totalPage) {
-    countFreeCell = 5;
-    foundLastPage = true;
-  }
+export function markupPagination(currentPage, totalPage) {
+  let isMobile = false;
+  let pagination = new PaginationService(currentPage, totalPage, isMobile);
+  console.log(pagination.get());
+  refs.paginationEl.innerHTML = pagination
+    .get()
+    .map(page => {
+      let buttonActiveClass =
+        page === currentPage ? 'pagination__button_active' : '';
+      let dataPage =
+        page == '<=' ? currentPage - 1 : page == '=>' ? currentPage + 1 : page;
+      // let captionButton =
+      return `<button type="button" class="pagination__button pagination_button-arrow_left ${buttonActiveClass}" data-page="${dataPage}">${page}</button>`;
+    })
+    .join('');
 
-  if (!foundLastPage) {
-    allPages.push(currentPage + 1);
-    if (currentPage + 1 === totalPage) {
-      countFreeCell = 3;
-      allPages.push('=>');
-      foundLastPage = true;
-    }
-  }
-
-  if (!foundLastPage) {
-    allPages.push(currentPage + 2);
-    if (currentPage + 2 === totalPage) {
-      countFreeCell = 2;
-      allPages.push('=>');
-      foundLastPage = true;
-    }
-  }
-
-  if (!foundLastPage) {
-    if (currentPage + 3 === totalPage) {
-      countFreeCell = 1;
-      allPages.push(currentPage + 3, '=>');
-      foundLastPage = true;
-    } else {
-      allPages.push('...');
-    }
-  }
-
-  if (!foundLastPage) {
-    allPages.push(totalPage, '=>');
-    countFreeCell = 0;
-    foundLastPage = true;
-  }
-
-  console.log(allPages);
+  //   console.log(pagination.get());
+  return 1;
 }
 
-Pagination(6, 1000);
+export function onPaginationBtnClick(evt, renderMovies) {
+  let page = evt.target.dataset.page;
+
+  if (page === '...') {
+    return;
+  }
+
+  if (evt.target.classList.contains('pagination__button_active')) {
+    return;
+  }
+  if (!page) {
+    return;
+  }
+  refs.page = Number(page);
+  markupPagination(refs.page, refs.totalPage);
+  renderMovies();
+}
