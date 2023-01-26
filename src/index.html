@@ -30,9 +30,9 @@
           </ul>
         </nav>
       </div>
-      <form class="form" name="search-form" autocomplete="off" novalidate>
+      <form class="form js-search-form" name="search-form" autocomplete="off" novalidate>
         <div class="form__box">
-          <input class="form__input" type="text" name="search_user" placeholder="Movie search" id="search" />
+          <input class="form__input js-search-input" type="text" name="search_user" placeholder="Movie search" id="search" />
           <button class="form__btn" aria-label="movie-search" type="submit">
             <svg class="form__icon" width="12" height="12">
               <use class="form__svg" href="./sass/img/sprite.svg#icon-search"></use>
@@ -40,7 +40,7 @@
           </button>
         </div>
       </form>
-      <span class="form__text-error">Search result not successful. Enter the correct movie name.
+      <span class="form__text-error visually-hidden js-search-error">Search result not successful. Enter the correct movie name.
       </span>
     </div>
   </header>
@@ -48,7 +48,7 @@
   <main>
     <section class="film-colection">
       <div class="container">
-        <ul class="film-colection__list">
+        <ul class="film-colection__list js-films-list">
           
 
         </ul>
