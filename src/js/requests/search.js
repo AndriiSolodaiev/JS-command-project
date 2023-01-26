@@ -1,5 +1,5 @@
 import { fetchBySearchString } from './fetchBySearchString';
-import { createMarkupGaleryMovies } from '../functions/createMarkupGaleryMovies';
+import { createMoviesCardMarkup } from '../functions/card';
 
 const form = document.querySelector('.js-search-form');
 const input = document.querySelector('.js-search-input');
@@ -28,7 +28,7 @@ async function onSearch(evt) {
       return;
     }
 
-    const filmsList = createMarkupGaleryMovies(response.results);
+    const filmsList = response.results.map(createMoviesCardMarkup).join('');
 
     list.insertAdjacentHTML('beforeend', filmsList);
   } catch (error) {
