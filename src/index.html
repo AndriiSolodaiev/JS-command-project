@@ -8,10 +8,18 @@
     
   </head>
   <body>
-  <include src="./partials/mw-movie.html"></include>
-  <include src="./partials/footer.html"></include>
-  <include src="./partials/mw-footer.html"></include>
-   <script type="module" src="./js/index.js"></script>
+    <!-- TODO: удалить когда будет готова разметка -->
+    <form class="js-search-form" action="">
+      <input type="text" class="js-search-input" placeholder="Movie search" />
+      <button type="submit">FIND</button>
+    </form>
+    <div class="js-films-list"></div>
+    <!--  -->
+
+    <include src="./partials/mw-movie.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/mw-footer.html"></include>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>
 
