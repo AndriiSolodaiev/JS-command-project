@@ -4,6 +4,7 @@ import { createMoviesCardMarkup } from '../functions/card';
 const form = document.querySelector('.js-search-form');
 const input = document.querySelector('.js-search-input');
 const list = document.querySelector('.js-films-list');
+const searchError = document.querySelector('.js-search-error');
 
 form.addEventListener('submit', onSearch);
 
@@ -17,14 +18,13 @@ async function onSearch(evt) {
   }
 
   list.innerHTML = '';
+  searchError.classList.add('visually-hidden');
 
   try {
     const response = await fetchBySearchString(sanitazedValue);
 
     if (!response.results.length) {
-      showError(
-        'Search result not successful. Enter the correct movie name and try again'
-      );
+      showError();
       return;
     }
 
@@ -32,11 +32,10 @@ async function onSearch(evt) {
 
     list.insertAdjacentHTML('beforeend', filmsList);
   } catch (error) {
-    showError('Error!!!');
+    showError();
   }
 }
 
-function showError(message) {
-  // TODO: Отобразить текст ошибки
-  console.log(message);
+function showError() {
+  searchError.classList.remove('visually-hidden');
 }
