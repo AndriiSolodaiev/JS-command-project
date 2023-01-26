@@ -5,7 +5,10 @@
 @import './base/container';
 
 
-
+@import './layout/film-colection';
+@import './components/form';
+@import './components/menu';
+@import './components/logo';
 @import './components/backdrop';
 @import './components/button';
 @import './components/active-button';
@@ -13,7 +16,7 @@
 @import './components/mw-movie';
 @import './components/pagination';
 
-
+@import './layout/header-mylibrary';
 @import './layout/header';
 @import './layout/gallery';
 @import './layout/footer';
