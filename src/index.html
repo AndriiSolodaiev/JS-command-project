@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    
+  </head>
+  <body>
+    <!-- TODO: удалить когда будет готова разметка -->
+    <form class="js-search-form" action="">
+      <input type="text" class="js-search-input" placeholder="Movie search" />
+      <button type="submit">FIND</button>
+    </form>
+    <div class="js-films-list"></div>
+   
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filmoteka</title>
-  <link rel="stylesheet" href="./sass/index.scss" />
+    <include src="./partials/mw-movie.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/mw-footer.html"></include>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
 
-</head>
-
-<body>
-  <include src="./partials/mw-movie.html"></include>
-  <include src="./partials/footer.html"></include>
-  <include src="./partials/mw-footer.html"></include>
 
 
   <!-- Розмітка пагінації -->
