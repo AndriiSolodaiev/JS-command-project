@@ -1,11 +1,11 @@
 import { fetchBySearchString } from '../requests/fetchBySearchString';
 import { createMarkupGaleryMovies } from './createMarkupGaleryMovies';
-import { refs } from '../refs';
+import { refs, data } from '../refs';
 
 export async function renderSearchedMovies(page) {
   try {
     const { total_pages, results } = await fetchBySearchString(
-      refs.searchString,
+      data.searchString,
       page
     );
 
@@ -14,8 +14,9 @@ export async function renderSearchedMovies(page) {
       return;
     }
 
-    refs.page = page;
-    refs.totalPage = total_pages;
+    data.page = page;
+    data.totalPage = total_pages;
+    data.typePagination = 'search';
 
     localStorage.setItem('currentMovies', JSON.stringify(results));
 

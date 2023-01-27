@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix';
+import { refs, data } from '../refs';
 import { renderSearchedMovies } from './renderSearchedMovies';
 
 const form = document.querySelector('.js-search-form');
@@ -18,7 +19,7 @@ function onSearch(evt) {
   }
 
   refs.searchError.classList.add('visually-hidden');
-  refs.searchString = sanitazedValue;
+  data.searchString = sanitazedValue;
 
   renderSearchedMovies(1);
 }
