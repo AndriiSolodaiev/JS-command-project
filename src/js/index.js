@@ -10,11 +10,6 @@ import './functions/search';
 
 import Notiflix from 'notiflix';
 
-import { markupPagination, onPaginationBtnClick } from './functions/pagination';
-// Розмітка пагінації
-// При першому виклику, поточна сторінка = 1, загальна кількість = 1000 (або більш правильно в refs.totalPage записати кількість, яку поверне рест запит )
-markupPagination(data.page, data.totalPage);
-
 // Обробка події на клік по кнопці пагінації
 refs.paginationEl.addEventListener('click', evt => {
   onPaginationBtnClick(evt);
