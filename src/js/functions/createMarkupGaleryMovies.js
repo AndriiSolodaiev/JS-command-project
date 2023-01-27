@@ -21,10 +21,6 @@ export async function renderTrendingMoviesPerDay(page) {
   const { results } = await fetchTrendingMoviesPerDay(page);
   const markup = await createMarkupGaleryMovies(results);
   refs.moviesCollection.innerHTML = await markup;
-  // data.page = 1;
-  // data.totalPage = total_pages;
-  // data.typePagination = 'trending';
-  // Викликати функцію markupPagination();
 
   localStorage.setItem('currentMovies', JSON.stringify(results));
   return;

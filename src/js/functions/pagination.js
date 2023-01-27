@@ -4,35 +4,32 @@ import { renderTrendingMoviesPerDay } from './createMarkupGaleryMovies.js';
 import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
 import { renderSearchedMovies } from './renderSearchedMovies';
 
-export function markupPagination(currentPage, totalPage) {
-  let isMobile = false;
-  let pagination = new PaginationService(currentPage, totalPage, isMobile);
-  console.log(pagination.get());
-  if (data.typePagination == 'empty') {
+export function markupPagination() {
+  if (data.page === 0) {
     refs.paginationEl.innerHTML = '';
     return;
   }
+  let isMobile = false;
+  let pagination = new PaginationService(data.page, data.totalPage, isMobile);
 
   refs.paginationEl.innerHTML = pagination
     .get()
     .map(page => {
       let buttonActiveClass =
-        page === currentPage ? 'pagination__button_active' : '';
-      let dataPage =
-        page == '<=' ? currentPage - 1 : page == '=>' ? currentPage + 1 : page;
+        page === data.page ? 'pagination__button_active' : '';
+      let pageModification =
+        page == '<=' ? data.page - 1 : page == '=>' ? data.page + 1 : page;
 
       // let captionButton =
-      return `<button type="button" class="pagination__button pagination_button-arrow_left ${buttonActiveClass}" data-page="${dataPage}">${page}</button>`;
+      return `<button type="button" class="pagination__button pagination_button-arrow_left ${buttonActiveClass}" data-page="${pageModification}">${page}</button>`;
     })
     .join('');
 
-  //   console.log(pagination.get());
-  return 1;
+  return;
 }
 
 export function onPaginationBtnClick(evt) {
   let page = evt.target.dataset.page;
-  console.log(page);
 
   if (page === '...') {
     return;
@@ -55,13 +52,18 @@ export function onPaginationBtnClick(evt) {
   }
 
   // if (data.typePagination === 'watched'){
-  // викликаємо функцію renderMoviesWatched
+  // викликаємо функцію renderMoviesWatched (data.page)
   //}
 
-  // if (data.typePagination === 'watched'){
-  // викликаємо функцію renderMoviesQuieu
+  // if (data.typePagination === 'queue'){
+  // викликаємо функцію renderMoviesQuieu (data.page)
   //}
-  // if (data.typePaginatio)
-
-  markupPagination(data.page, data.totalPage);
 }
+
+//Функція renderMoviesWatcedAndQueue (page) {
+// робить відмальовку
+// в об'єкт дата записати:
+// data.page =  якщо список фільмів пустий, то сюди записуємо нуль, інакше записуємо значення параметра "page"
+// data.totalPages = total_pages
+// data.typePagination = watched || queue
+// Виклик функції markupPagination ()
