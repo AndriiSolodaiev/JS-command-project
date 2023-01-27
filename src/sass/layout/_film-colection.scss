@@ -2,29 +2,29 @@
     padding: 20px 0;
 
     @media screen and (min-width: 768px) {
-    padding: 60px 0;
+        padding: 60px 0;
     }
 
     &__list {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--indent);
+        row-gap: 20px;
+        column-gap: var(--indent);
+
+        @media screen and (min-width: 768px) {
+            row-gap: 32px;
+            --indent: 32px;
+            --items: 2;
+        }
+
+        @media screen and (min-width: 1280px) {
+            --indent: 15.5px;
+            --items: 3;
+        }
+
     }
 
     &__item {
-        display: flex;
         flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
-
-        @media screen and (max-width: 767px) {
-            --items: 1;
-            }
-
-        @media screen and (min-width: 768px) {
-            --items: 2;
-            }
-
-        @media screen and (min-width: 1280px) {
-            --items: 3;
-        }
     }
 }

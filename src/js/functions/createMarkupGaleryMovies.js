@@ -3,24 +3,29 @@ import { createMoviesCardMarkup } from './card';
 import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
 import { data, refs } from '../refs';
 import { createGenresObj } from './genres';
-
+import { markupPagination } from './pagination';
 export function createMarkupGaleryMovies(arr) {
-  let markupGaleryMovies = arr
+  return arr
     .map(moviesCard => {
-      const markup = `<li class="movies__card" data-id=${
+      const markup = `<li class="movies__card film-colection__item" data-id=${
         moviesCard.id
       }>${createMoviesCardMarkup(moviesCard)}</li>`;
       return markup;
     })
     .join('');
-  markupGaleryMovies = `<ul class="movies">${markupGaleryMovies}</ul>`;
-  return markupGaleryMovies;
+  // markupGaleryMovies = `<ul class="movies">${markupGaleryMovies}</ul>`;
 }
 
 export async function renderTrendingMoviesPerDay(page) {
-  const { results } = await fetchTrendingMoviesPerDay(page);
+  const { total_pages, results } = await fetchTrendingMoviesPerDay(page);
   const markup = await createMarkupGaleryMovies(results);
   refs.moviesCollection.innerHTML = await markup;
+
+  data.page = page;
+  data.totalPage = total_pages;
+  data.typePagination = 'trending';
+  markupPagination();
+
 
   localStorage.setItem('currentMovies', JSON.stringify(results));
   return;
