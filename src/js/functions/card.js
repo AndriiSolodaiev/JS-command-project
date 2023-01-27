@@ -59,8 +59,3 @@ const parsedGenres = JSON.parse(savedGenres);
   
   return genresCard.join(', ');  
   } 
-
- 
-
-
- 
