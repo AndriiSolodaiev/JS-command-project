@@ -1,5 +1,5 @@
 import { PaginationService } from './paginationService.js';
-import { data, refs } from '../data';
+import { data, refs } from '../refs';
 import { renderTrendingMoviesPerDay } from './createMarkupGaleryMovies.js';
 import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
 

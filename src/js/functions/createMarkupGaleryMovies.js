@@ -1,7 +1,7 @@
 // в рядку 6 залишилося вставити функцію формування картки
 import { createMoviesCardMarkup } from './card';
 import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
-import { data, refs } from '../data';
+import { data, refs } from '../refs';
 import { createGenresObj } from './genres';
 
 export function createMarkupGaleryMovies(arr) {

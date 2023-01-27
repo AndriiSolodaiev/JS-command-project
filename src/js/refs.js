@@ -16,7 +16,6 @@ export const library = {
 export const data = {
   page: 1,
   totalPage: 1000,
-  serchValue: '',
   searchString: '',
   // typePagination буде приймати такі значення:
   // search,
