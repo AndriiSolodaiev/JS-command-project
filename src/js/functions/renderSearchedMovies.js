@@ -1,6 +1,7 @@
 import { fetchBySearchString } from '../requests/fetchBySearchString';
 import { createMarkupGaleryMovies } from './createMarkupGaleryMovies';
 import { refs, data } from '../refs';
+import { markupPagination } from './pagination';
 
 export async function renderSearchedMovies(page) {
   try {
@@ -17,6 +18,8 @@ export async function renderSearchedMovies(page) {
     data.page = page;
     data.totalPage = total_pages;
     data.typePagination = 'search';
+
+    markupPagination(data.page, data.totalPage);
 
     localStorage.setItem('currentMovies', JSON.stringify(results));
 
