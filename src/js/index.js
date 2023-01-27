@@ -17,7 +17,7 @@ markupPagination(data.page, data.totalPage);
 
 // Обробка події на клік по кнопці пагінації
 refs.paginationEl.addEventListener('click', evt => {
-  onPaginationBtnClick(evt, renderMovies);
+  onPaginationBtnClick(evt);
 });
 
 import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies';

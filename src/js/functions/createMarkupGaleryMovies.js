@@ -1,7 +1,7 @@
 // в рядку 6 залишилося вставити функцію формування картки
 import { createMoviesCardMarkup } from './card';
 import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
-import { refs } from '../data';
+import { data, refs } from '../data';
 import { createGenresObj } from './genres';
 
 export function createMarkupGaleryMovies(arr) {
@@ -21,6 +21,10 @@ export async function renderTrendingMoviesPerDay(page) {
   const { results } = await fetchTrendingMoviesPerDay(page);
   const markup = await createMarkupGaleryMovies(results);
   refs.moviesCollection.innerHTML = await markup;
+  // data.page = 1;
+  // data.totalPage = total_pages;
+  // data.typePagination = 'trending';
+  // Викликати функцію markupPagination();
 
   localStorage.setItem('currentMovies', JSON.stringify(results));
   return;
