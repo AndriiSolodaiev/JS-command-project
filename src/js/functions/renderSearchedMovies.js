@@ -3,10 +3,10 @@ import { createMarkupGaleryMovies } from './createMarkupGaleryMovies';
 import { refs, data } from '../refs';
 import { markupPagination } from './pagination';
 
-export async function renderSearchedMovies(page) {
+export async function renderSearchedMovies(page, searchString) {
   try {
     const { total_pages, results } = await fetchBySearchString(
-      data.searchString,
+      searchString,
       page
     );
 
@@ -17,6 +17,8 @@ export async function renderSearchedMovies(page) {
 
     data.page = page;
     data.totalPage = total_pages;
+    data.searchString = searchString;
+
     data.typePagination = 'search';
 
     markupPagination(data.page, data.totalPage);

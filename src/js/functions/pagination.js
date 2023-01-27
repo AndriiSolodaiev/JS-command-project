@@ -51,7 +51,7 @@ export function onPaginationBtnClick(evt) {
   }
 
   if (data.typePagination === 'search') {
-    renderSearchedMovies(data.page);
+    renderSearchedMovies(data.page, data.searchString);
   }
 
   // if (data.typePagination === 'watched'){
