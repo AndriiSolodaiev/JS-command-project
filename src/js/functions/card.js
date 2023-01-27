@@ -41,7 +41,7 @@ export function createMoviesCardMarkup(movies) {
             <div class='films-gallery__wrap'>
                 <h2 class='films-gallery__title'>${title}</h2>
                 <div class='films-gallery__info'>
-                <p class='films-gallery__text'>${setMovieGenresNames(genre_ids)} ${linea} ${release_date.slice(0, 4,)}</p>
+                <p class='films-gallery__text'>${setMovieGenresNames(genre_ids)} ${linea} ${release_date?.slice(0, 4,)}</p>
                 <p class='films-gallery__rate '>${voteAverage}</p>
                 </div>
             </div>`;
@@ -51,7 +51,7 @@ export function createMoviesCardMarkup(movies) {
 };
 
 function setMovieGenresNames(array) {
-const savedGenres = localStorage.getItem("genres");
+  const savedGenres = localStorage.getItem("genres");
 const parsedGenres = JSON.parse(savedGenres);
   let genresCard = array.map(element => {
    return parsedGenres[element]
