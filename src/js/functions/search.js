@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import { refs } from '../refs';
 import { renderSearchedMovies } from './renderSearchedMovies';
 
@@ -13,13 +14,13 @@ function onSearch(evt) {
   const sanitazedValue = input.value.trim();
 
   if (!sanitazedValue) {
+    Notify.failure('Please enter movie');
     return;
   }
 
   refs.searchError.classList.add('visually-hidden');
-  refs.searchString = sanitazedValue;
 
-  renderSearchedMovies(1);
+  renderSearchedMovies(1, sanitazedValue);
 }
 
 function onInput() {

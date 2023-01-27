@@ -2,6 +2,7 @@ import { PaginationService } from './paginationService.js';
 import { data, refs } from '../refs';
 import { renderTrendingMoviesPerDay } from './createMarkupGaleryMovies.js';
 import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
+import { renderSearchedMovies } from './renderSearchedMovies';
 
 export function markupPagination(currentPage, totalPage) {
   let isMobile = false;
@@ -45,13 +46,13 @@ export function onPaginationBtnClick(evt) {
   }
   data.page = Number(page);
 
-  // if (data.typePagination === 'trending') {
-  renderTrendingMoviesPerDay(data.page);
-  // }
+  if (data.typePagination === 'trending') {
+    renderTrendingMoviesPerDay(data.page);
+  }
 
-  // if (data.typePagination === 'search'){
-  // викликаємо функцію renderSearch
-  //}
+  if (data.typePagination === 'search') {
+    renderSearchedMovies(data.page, data.searchString);
+  }
 
   // if (data.typePagination === 'watched'){
   // викликаємо функцію renderMoviesWatched
