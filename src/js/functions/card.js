@@ -13,9 +13,16 @@ export function createMoviesCardMarkup(movies) {
           posterPath = `https://image.tmdb.org/t/p/w400/${poster_path}`;
         } else {
           posterPath =
-            'https://cdn.create.vista.com/api/media/small/324908572/stock-vector-3d-cinema-film-strip-in';
+            'https://studentlegallounge.humboldt.edu/sites/default/files/styles/panopoly_image_original/public/image-coming-soon.jpg?itok=e-RY5zkr';
   }
   
+  let voteAverage = vote_average;
+  if (voteAverage === 0.0) {
+    voteAverage = `+`
+  } else {
+    voteAverage = vote_average.toFixed(1)
+  }
+
   let linea = '|'
   if (genre_ids.length && release_date) {
     linea = '|'
@@ -35,7 +42,7 @@ export function createMoviesCardMarkup(movies) {
                 <h2 class='films-gallery__title'>${title}</h2>
                 <div class='films-gallery__info'>
                 <p class='films-gallery__text'>${setMovieGenresNames(genre_ids)} ${linea} ${release_date.slice(0, 4,)}</p>
-                <p class='films-gallery__rate '>${vote_average.toFixed(1)}</p>
+                <p class='films-gallery__rate '>${voteAverage}</p>
                 </div>
             </div>`;
   
@@ -58,4 +65,4 @@ const parsedGenres = JSON.parse(savedGenres);
   }
   
   return genresCard.join(', ');  
-  } 
+} 
