@@ -7,7 +7,7 @@ import { refs } from './refs';
 import { createGenresObj } from './functions/genres';
 createGenresObj();
 import './functions/search';
-
+import { onPaginationBtnClick } from './functions/pagination';
 import Notiflix from 'notiflix';
 
 // Обробка події на клік по кнопці пагінації
