@@ -19,7 +19,7 @@ function onSearch(evt) {
   refs.searchError.classList.add('visually-hidden');
   refs.searchString = sanitazedValue;
 
-  renderSearchedMovies();
+  renderSearchedMovies(1);
 }
 
 function onInput() {

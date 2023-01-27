@@ -14,20 +14,16 @@ export async function renderSearchedMovies(page) {
       return;
     }
 
-    if (!page) {
-      // Якщо page === undefined, то це перший пошук за введеним текстом
-      // необхідно оновити данні для пагінації
-      refs.page = 1;
-      refs.totalPage = total_pages;
-    }
+    refs.page = page;
+    refs.totalPage = total_pages;
+
+    localStorage.setItem('currentMovies', JSON.stringify(results));
 
     const markup = createMarkupGaleryMovies(results);
     refs.moviesCollection.innerHTML = markup;
   } catch (error) {
     showError();
   }
-
-  localStorage.setItem('currentMovies', JSON.stringify(results));
 }
 
 function showError() {
