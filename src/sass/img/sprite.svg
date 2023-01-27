@@ -18,7 +18,11 @@
     <symbol id="icon-arrow-right" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
     </symbol>
-    
+    <symbol id="icon-cross" viewBox="0 0 32 32">
+      <path fill="none" stroke="#000" style="stroke: var(--color1, #000)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 8.533l14.933 14.933"></path>
+      <path d="M22.712 7.779l-14.933 14.933 1.508 1.508 14.933-14.933z"></path>
+    </symbol>
+
     
   </defs>
 </svg>
