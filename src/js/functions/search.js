@@ -1,6 +1,7 @@
 import { Notify } from 'notiflix';
-import { refs } from '../refs';
+import { data, refs } from '../refs';
 import { renderSearchedMovies } from './renderSearchedMovies';
+import { renderTrendingMoviesPerDay } from './createMarkupGaleryMovies';
 
 const form = document.querySelector('.js-search-form');
 const input = document.querySelector('.js-search-input');
@@ -15,6 +16,11 @@ function onSearch(evt) {
 
   if (!sanitazedValue) {
     Notify.failure('Please enter movie');
+
+    if (data.typePagination === 'search') {
+      renderTrendingMoviesPerDay(1);
+    }
+
     return;
   }
 
