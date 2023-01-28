@@ -13,10 +13,20 @@ import Notiflix from 'notiflix';
 // Обробка події на клік по кнопці пагінації
 refs.paginationEl.addEventListener('click', evt => {
   onPaginationBtnClick(evt);
+   window.scrollTo({
+    top: 0,
+    left: 0,
+  });
 });
 
 import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies';
 renderTrendingMoviesPerDay(data.page);
 
 import { openModal } from'./functions/modal';
+
 refs.moviesCollection.addEventListener("click", openModal)
+
+
+import { toggleModal } from './functions/mw-footer';
+refs.openModal.addEventListener('click', toggleModal)
+
