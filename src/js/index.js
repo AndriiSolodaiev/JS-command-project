@@ -23,8 +23,10 @@ import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies
 renderTrendingMoviesPerDay(data.page);
 
 import { openModal } from'./functions/modal';
+
 refs.moviesCollection.addEventListener("click", openModal)
 
 
 import { toggleModal } from './functions/mw-footer';
 refs.openModal.addEventListener('click', toggleModal)
+

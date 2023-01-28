@@ -1,7 +1,9 @@
 export const refs = {
   paginationEl: document.querySelector('.pagination'),
-  addToWatchBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
-  addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
+  // ці строчки перенесла у функцію модалки, тому що елементи кнопок існують тільки при відкритій модалці, 
+  // поза нею до них неможливо звернутись
+  // addToWatchBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
+  // addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
   moviesCollection: document.querySelector('.js-films-list'),
   searchError: document.querySelector('.js-search-error'),
   openModal: document.querySelector("[data-modal-open]")

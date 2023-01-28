@@ -1,3 +1,7 @@
+import { onModalLibraryBtnClick } from './onModalLibraryBtnClick';
+import { library } from './../refs';
+import { checkModalBtnName } from './checkModalBtnName';
+
 // refs.moviesCollection.addEventListener("click", openModal) 
 export function openModal(event) {
   event.preventDefault();
@@ -73,23 +77,61 @@ export function openModal(event) {
       </p>
       <ul class="mw-movie__btn-list">
         <li>
-          <button class="mw-movie__btn-addwatch" type="button">
-            Add to watched
-          </button>
+          <button class="mw-movie__btn-addwatch" type="button">Add to watched</button>
         </li>
         <li>
-          <button class="mw-movie__btn-addqueue" type="button">
-            Add to Queue
-          </button>
+          <button class="mw-movie__btn-addqueue" type="button">Add to queue</button>
         </li>
       </ul>
     </div>
   </div>`;
     
-    ////слухач на кнопку закриття
-    const closeMovieCard = document.querySelector("[mw-movie-close]")
-    closeMovieCard.addEventListener("click", () =>
-    {modalMovieCard.hidden = true})
+  ////слухач на кнопку закриття
+  const closeMovieCard = document.querySelector("[mw-movie-close]")
+  closeMovieCard.addEventListener("click", () =>
+  {modalMovieCard.hidden = true})
+
+  const modalRefs = {
+      addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
+      addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
+  };
+
+  if(JSON.parse(localStorage.getItem('watchedMovies'))) {
+    library.watchedMovies = JSON.parse(localStorage.getItem('watchedMovies'));
+  }
+  
+  if(JSON.parse(localStorage.getItem('queueMovies'))) {
+    library.queueMovies = JSON.parse(localStorage.getItem('queueMovies'));
+  }
+
+  checkModalBtnName(
+    movieCardObj,
+    modalRefs.addToWatchedBtnEl, 
+    'watched',
+    'watchedMovies'
+  );
+
+  checkModalBtnName(
+    movieCardObj,  
+    modalRefs.addToQueueBtnEl, 
+    'queue', 
+    'queueMovies'
+  );
+
+  // слухачі подій на кнопки add to watched, add to queue
+  modalRefs.addToWatchedBtnEl.addEventListener('click', () => onModalLibraryBtnClick(
+    movieCardObj, 
+    library.watchedMovies, 
+    modalRefs.addToWatchedBtnEl, 
+    'watched', 
+    'watchedMovies'));
+
+  modalRefs.addToQueueBtnEl.addEventListener('click', () => onModalLibraryBtnClick(
+    movieCardObj, 
+    library.queueMovies, 
+    modalRefs.addToQueueBtnEl, 
+    'queue', 
+    'queueMovies'));
 }
 /////////////
 // Доробити:
