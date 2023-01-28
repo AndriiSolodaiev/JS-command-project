@@ -19,4 +19,4 @@ import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies
 renderTrendingMoviesPerDay(data.page);
 
 import { openModal } from'./functions/modal';
-refs.moviesCollection.addEventListener("click", openModal) 
+refs.moviesCollection.addEventListener("click", openModal)
