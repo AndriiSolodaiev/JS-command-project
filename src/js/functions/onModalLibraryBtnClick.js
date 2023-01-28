@@ -5,14 +5,9 @@
 //btnEl - поточна кнопка
 //action - вказати watched або queue (відповідно до кнопки, на яку натиснули)
 //storageKey - ключ елемента localStorage (watchedMovies або queueMovies)
-
-export function onModalLibraryBtnClick(currentMovie, libraryArr, btnEl, action, storageKey) {
-    localStorage.removeItem(storageKey);
-    
+export function onModalLibraryBtnClick(currentMovie, libraryArr, btnEl, action, storageKey) {       
     if(btnEl.textContent === `Add to ${action}`) {
-
         libraryArr.push(currentMovie);
-
         btnEl.textContent = `Remove from ${action}`;
     } else {
         for(let i = 0; i <= libraryArr.length; i += 1) {
