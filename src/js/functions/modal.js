@@ -12,7 +12,13 @@ export function openModal(event) {
       modalMovieCard.hidden = true
     };
   }); 
-  
+  document.addEventListener("keydown", () => {
+    if(refs.openQueueBtnEl.classList.contains('btn__current')) {
+      renderMoviesWatchedAndQueue('queueMovies', 'queue');
+    } else {
+      renderMoviesWatchedAndQueue('watchedMovies', 'watched');
+    }
+  });
     
   ////перевірка чи таргет = li
   const modalMovieCard = document.querySelector("[mw-movie-card]");

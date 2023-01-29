@@ -3,6 +3,7 @@ import { renderMoviesWatchedAndQueue } from "./functions/renderMoviesWatchedAndQ
 import { changeCurrentBtnOfLibrary } from "./functions/changeCurrentBtnOfLibrary";
 import { openModal } from "./functions/modal";
 
+renderMoviesWatchedAndQueue('queueMovies', 'queue');
 refs.openWatchedBtnEl.addEventListener('click', () => renderMoviesWatchedAndQueue('watchedMovies', 'watched'));
 refs.openQueueBtnEl.addEventListener('click', () => renderMoviesWatchedAndQueue('queueMovies', 'queue'));
 refs.openWatchedBtnEl.addEventListener('click', () => changeCurrentBtnOfLibrary(refs.openWatchedBtnEl, refs.openQueueBtnEl));
