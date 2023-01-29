@@ -6,7 +6,8 @@ export const refs = {
   // addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
   moviesCollection: document.querySelector('.js-films-list'),
   searchError: document.querySelector('.js-search-error'),
-  openModal: document.querySelector("[data-modal-open]")
+  openModal: document.querySelector("[data-modal-open]"),
+  loaderContainer: document.querySelector('.loader-container')
 };
 
 //масиви з об'єктами фільмів my library, що будуть збережені до localStorage

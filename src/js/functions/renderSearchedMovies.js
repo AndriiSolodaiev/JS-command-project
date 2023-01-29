@@ -3,6 +3,9 @@ import { createMarkupGaleryMovies } from './createMarkupGaleryMovies';
 import { refs, data } from '../refs';
 import { markupPagination } from './pagination';
 
+import { showLoader } from './loader';
+import { hideLoader } from './loader';
+
 export async function renderSearchedMovies(page, searchString) {
   try {
     const { total_pages, results } = await fetchBySearchString(
@@ -10,15 +13,17 @@ export async function renderSearchedMovies(page, searchString) {
       page
     );
 
+    showLoader(); // 'switch on' loader-spinner
+
     if (!results.length) {
       showError();
+      hideLoader(); // 'switch off' loader-spinner if error
       return;
     }
 
     data.page = page;
     data.totalPage = total_pages;
     data.searchString = searchString;
-
     data.typePagination = 'search';
 
     markupPagination(data.page, data.totalPage);
@@ -27,6 +32,9 @@ export async function renderSearchedMovies(page, searchString) {
 
     const markup = createMarkupGaleryMovies(results);
     refs.moviesCollection.innerHTML = markup;
+
+    hideLoader(); // 'switch off' loader-spinner if successful
+
   } catch (error) {
     showError();
   }
