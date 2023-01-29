@@ -33,12 +33,23 @@
                 </nav>
             </div>
             <div class="btn">
-                <button class="button ">WATCHED</button>
-                <button class="button btn__current">QUEUE</button>
+                <button class="button button__watched">WATCHED</button>
+                <button class="button button__queue">QUEUE</button>
             </div>
         </div>
     </header>
 
+    <main>
+        <section class="film-colection">
+            <div class="container js-library-container">
+                <ul class="film-colection__list js-library-film-colection__list">
+                </ul>
+            <div class="pagination"></div>
+            </div>
+        </section>
+    </main>
+
+    <include src="./partials/mw-movie.html"></include>
     <script type="module" src="./js/mylibrary.js"></script>
 </body>
 
