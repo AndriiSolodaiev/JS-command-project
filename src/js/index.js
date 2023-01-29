@@ -7,26 +7,28 @@ import { refs } from './refs';
 import { createGenresObj } from './functions/genres';
 createGenresObj();
 import './functions/search';
-import { onPaginationBtnClick } from './functions/pagination';
+import debounce from '../../node_modules/lodash/fp/debounce.js';
+
+import { markupPagination, onPaginationBtnClick } from './functions/pagination';
 import Notiflix from 'notiflix';
 
 // Обробка події на клік по кнопці пагінації
 refs.paginationEl.addEventListener('click', evt => {
   onPaginationBtnClick(evt);
-   window.scrollTo({
-    top: 0,
-    left: 0,
-  });
 });
+
+window.addEventListener(
+  'resize',
+  debounce(250, e => {
+    markupPagination();
+  })
+);
 
 import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies';
 renderTrendingMoviesPerDay(data.page);
 
-import { openModal } from'./functions/modal';
-
-refs.moviesCollection.addEventListener("click", openModal)
-
+import { openModal } from './functions/modal';
+refs.moviesCollection.addEventListener('click', openModal);
 
 import { toggleModal } from './functions/mw-footer';
-refs.openModal.addEventListener('click', toggleModal)
-
+refs.openModal.addEventListener('click', toggleModal);

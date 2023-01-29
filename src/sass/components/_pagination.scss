@@ -1,8 +1,7 @@
-// !!!!!!!!!!!!Буде доопрацьовано
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .pagination__button {
@@ -12,51 +11,22 @@
   width: 40px;
   text-align: center;
   background-color: inherit;
-  // border: 0;
+  border: 0;
   border-radius: 5px;
-
-  cursor: pointer;
-}
-
-.pagination__button_active {
-  background-color: #ff6b08;
   cursor: default;
-  color: #fff;
-}
 
-.pagination__button_active:hover,
-.pagination__button_active:focus {
-  background-color: #ff6b08;
-}
+  &_hover:hover {
+    background-color: #d7d7d7;
+    cursor: pointer;
+  }
 
-.pagination__button-arrow-left {
-  background-color: #f7f7f7;
-  // background-image: url('../src/sass/img/sprite.svg#icon-arrow-left');
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  &_active {
+    background-color: #ff6b08;
+    cursor: default;
+    color: #fff;
+  }
 
-.pagination__button-arrow-left:hover,
-.pagination__button-arrow-left:focus {
-  background-color: #d7d7d7;
-}
-
-.pagination__button-arrow-right {
-  background-color: #f7f7f7;
-  // background-image: url('../src/sass/img/sprite.svg#icon-arrow-right');
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.pagination__button-arrow-right:hover,
-.pagination__button-arrow-right:focus {
-  background-color: #d7d7d7;
-}
-
-.pagination__button-dots {
-  cursor: default;
-}
-
-.pagination__button-dots:hover {
-  background-color: inherit;
+  &-arrow {
+    background-color: #f7f7f7;
+  }
 }
