@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filmoteka</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./sass/index.scss" />
 </head>
 
@@ -35,7 +36,8 @@
       </div>
       <form class="form js-search-form" name="search-form" autocomplete="off" novalidate>
         <div class="form__box">
-          <input class="form__input js-search-input" type="text" name="search_user" placeholder="Movie search" id="search" />
+          <input class="form__input js-search-input" type="text" name="search_user" placeholder="Movie search"
+            id="search" />
           <button class="form__btn" aria-label="movie-search" type="submit">
             <svg class="form__icon" width="12" height="12">
               <use class="form__svg" href="./sass/img/sprite.svg#icon-search"></use>
@@ -43,19 +45,24 @@
           </button>
         </div>
       </form>
-      <span class="form__text-error visually-hidden js-search-error">Search result not successful. Enter the correct movie name.
+      <span class="form__text-error visually-hidden js-search-error">Search result not successful. Enter the correct
+        movie name.
       </span>
     </div>
   </header>
-  
+
   <main>
-    <section class="film-colection">
+    <!-- added loader markup to section-->
+    <div class="loader-container loader-container__is-hidden">
+      <div class="loader-container__spinner"></div>
+    </div>
+    <section class="film-colection"> 
       <div class="container">
         <ul class="film-colection__list js-films-list">
-          
+
 
         </ul>
-        <div class="pagination"></div>
+        <div class="pagination js-pagination"></div>
       </div>
     </section>
   </main>

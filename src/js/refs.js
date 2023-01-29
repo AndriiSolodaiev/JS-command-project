@@ -1,5 +1,6 @@
 export const refs = {
-  paginationEl: document.querySelector('.pagination'),
+
+
   moviesCollection: document.querySelector('.js-films-list'),
   searchError: document.querySelector('.js-search-error'),
   openModal: document.querySelector("[data-modal-open]"),
@@ -10,6 +11,17 @@ export const refs = {
   openQueueBtnEl: document.querySelector('.button__queue'),
   libraryContainerEl: document.querySelector('.js-library-container'),
   libraryMessageContainerEl: document.querySelector('.library-message'),
+
+  paginationEl: document.querySelector('.js-pagination'),
+  // ці строчки перенесла у функцію модалки, тому що елементи кнопок існують тільки при відкритій модалці, 
+  // поза нею до них неможливо звернутись
+  // addToWatchBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
+  // addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
+ 
+  
+
+  loaderContainer: document.querySelector('.loader-container')
+
 };
 
 //масиви з об'єктами фільмів my library, що будуть збережені до localStorage
