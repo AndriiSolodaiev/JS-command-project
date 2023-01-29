@@ -30,7 +30,7 @@ export function renderMoviesWatchedAndQueue(storageKey, typeOfLibrary) {
     data.typePagination = typeOfLibrary;
 
     // markupPagination(); 
-// }
+}
 
 //storageKey - 'watchedMovies' or 'queueMovies'
 //libraryPage - 'watched' or 'queue'
