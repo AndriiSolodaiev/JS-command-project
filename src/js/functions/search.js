@@ -15,12 +15,12 @@ function onSearch(evt) {
   const sanitazedValue = input.value.trim();
 
   if (!sanitazedValue) {
-    Notify.failure('Please enter movie');
-
     if (data.typePagination === 'search') {
       renderTrendingMoviesPerDay(1);
+      return;
     }
 
+    Notify.failure('Please enter movie');
     return;
   }
 
