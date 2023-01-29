@@ -16,7 +16,7 @@ export function renderMoviesWatchedAndQueue(storageKey, typeOfLibrary) {
         refs.moviesCollectionLibrary.innerHTML = markup;
     // }
 
-    // const page = moviesArr.slice(0, 20);
+    // page = moviesArr.slice(0, 20);
     // на початку begin = 0, end = 20
     // кожна наступна сторінка begin + 20, end + 20
 
