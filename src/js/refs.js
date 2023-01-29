@@ -1,5 +1,5 @@
 export const refs = {
-  paginationEl: document.querySelector('.pagination'),
+  paginationEl: document.querySelector('.js-pagination'),
   // ці строчки перенесла у функцію модалки, тому що елементи кнопок існують тільки при відкритій модалці, 
   // поза нею до них неможливо звернутись
   // addToWatchBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
