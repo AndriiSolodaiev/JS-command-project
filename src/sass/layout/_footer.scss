@@ -25,6 +25,9 @@
 .footer-underline {
   text-decoration: underline;
 }
+.footer-link {
+  cursor: pointer;
+}
 @media screen and (max-width: 767px) {
   .text-flex {
     margin-top: 10px;
@@ -42,22 +45,27 @@
 .modal {
   //   transition: transform var(--animation-modal), opacity var(--animation-modal);
   position: absolute;
-  top: 50%;
+  top: 10px;
   left: 50%;
-  padding: 40px;
-  transform: translate(-50%, -50%);
+  padding: 20px;
+  transform: translate(-50%, 0%);
   width: 100%;
+
   @media screen and (min-width: 320px) {
-    width: 300px;
+    width: 280px;
+    overflow: auto;
     // height: 609px;
   }
   @media screen and (min-width: 768px) {
-    width: 650px;
+    width: 676px;
+    overflow: auto;
     // height: 609px;
   }
   @media screen and (min-width: 1280px) {
     width: 1000px;
-    height: 581px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    // height: 600px;
   }
 
   background-color: var(--base-bg-color);
@@ -76,8 +84,9 @@
   width: 30px;
   height: 30px;
   background: var(--base-bg-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+  fill: black;
+  // border: 1px solid rgba(0, 0, 0, 0.1);
+  // border-radius: 50%;
   //   transition: fill var(--animation);
   &:hover,
   &:focus {
@@ -90,21 +99,61 @@
   opacity: 0;
   pointer-events: none;
 }
-
+.modal-team {
+  text-align: center;
+  // overflow: ;
+}
 // .backdrop.is-hidden .modal {
 //   transform: scale(3) rotate(180deg);
 //   opacity: 0;
 // }
 
 .team-item {
-  border: 3px solid grey;
-  width: 220px;
+  width: 150px;
+  box-shadow: 0 4px 5px #777;
+  border-radius: 2px;
 }
 .team-img {
-  width: 200px;
+  width: 100%;
+  border-radius: 2px;
 }
 .team-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  justify-content: center;
+  // margin-left: auto;
+  // margin-right: auto;
+}
+.team-tumb {
+  display: flex;
+  @media screen and (max-width: 767px) {
+    align-items: center;
+    justify-content: center;
+  }
+
+  margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    gap: 95px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 255px;
+  }
+}
+.team-title {
+  font-size: 30px;
+  font-family: inherit;
+  color: var(--accent-color);
+  @media screen and (max-width: 767px) {
+    display: none;
+    font-size: 1px;
+  }
+}
+.team-description {
+  padding: 3px;
+}
+.team-name {
+  // color: var(--accent-color);
+  font-weight: 50px;
+  font-family: inherit;
 }
