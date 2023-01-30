@@ -20,6 +20,7 @@ export function openModal(event) {
     }
   });
 
+
   ////перевірка чи таргет = li
   const modalMovieCard = document.querySelector('[mw-movie-card]');
   modalMovieCard.hidden = false;
@@ -111,6 +112,7 @@ export function openModal(event) {
   });
 
   //оновлення вмісту сторінку по закриттю модалки
+
   closeMovieCard.addEventListener('click', () => {
     if (refs.openQueueBtnEl.classList.contains('btn__current')) {
       renderMoviesWatchedAndQueue(1, 'queueMovies', 'queue');
@@ -118,6 +120,7 @@ export function openModal(event) {
       renderMoviesWatchedAndQueue(1, 'watchedMovies', 'watched');
     }
   });
+
 
   const modalRefs = {
     addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),

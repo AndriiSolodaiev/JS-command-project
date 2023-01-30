@@ -20,6 +20,7 @@ refs.openQueueBtnEl.addEventListener('click', () =>
 );
 refs.moviesCollectionLibrary.addEventListener('click', openModal);
 
+
 refs.paginationEl.addEventListener('click', evt => {
   onPaginationBtnClick(evt);
 });
@@ -30,3 +31,10 @@ window.addEventListener(
     markupPagination();
   })
 );
+
+// Footer 
+import  {onOpenModalFooterClick, onCloseModalFooterClick, onBackdropClickToClose} from "./functions/mw-footer";
+refs.openModalFooter.addEventListener("click", onOpenModalFooterClick);
+refs.closeModalFooter.addEventListener('click', onCloseModalFooterClick);
+refs.modalFooter.addEventListener("click", onBackdropClickToClose);
+

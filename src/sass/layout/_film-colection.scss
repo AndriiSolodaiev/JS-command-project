@@ -1,9 +1,11 @@
 .film-colection {
   padding: 20px 0 40px 0;
 
+
   @media screen and (min-width: 768px) {
     padding: 60px 0;
   }
+
 
   &__list {
     display: flex;
@@ -23,6 +25,7 @@
       --indent: 15.5px;
       --items: 3;
     }
+
   }
 
   &__item {
@@ -31,3 +34,10 @@
     );
   }
 }
+
+
+.error-img {
+    margin-right: auto;
+    margin-left: auto;
+}
+

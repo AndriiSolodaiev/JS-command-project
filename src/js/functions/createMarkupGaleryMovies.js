@@ -4,9 +4,8 @@ import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
 import { data, refs } from '../refs';
 import { createGenresObj } from './genres';
 import { markupPagination } from './pagination';
-
-import { showLoader } from './loader';
-import { hideLoader } from './loader';
+// import { Notify } from 'notiflix';
+import { showLoader, hideLoader } from './loader';
 
 export function createMarkupGaleryMovies(arr) {
   return arr
@@ -17,41 +16,34 @@ export function createMarkupGaleryMovies(arr) {
       return markup;
     })
     .join('');
-  // markupGaleryMovies = `<ul class="movies">${markupGaleryMovies}</ul>`;
 }
 
 export async function renderTrendingMoviesPerDay(page) {
-  showLoader(); // 'switch on' loader-spinner
+  try {
+    showLoader(); // 'switch on' loader-spinner
 
-  const { total_pages, results } = await fetchTrendingMoviesPerDay(page);
-  const markup = await createMarkupGaleryMovies(results);
-  refs.moviesCollection.innerHTML = await markup;
+    const { total_pages, results } = await fetchTrendingMoviesPerDay(page);
+    const markup = await createMarkupGaleryMovies(results);
+    refs.errorMessage.innerHTML = '';
+    refs.moviesCollection.innerHTML = await markup;
 
-  data.page = page;
-  data.totalPage = total_pages;
-  data.typePagination = 'trending';
-  markupPagination();
+    data.page = page;
+    data.totalPage = total_pages;
+    data.typePagination = 'trending';
+    markupPagination();
 
-  localStorage.setItem('currentMovies', JSON.stringify(results));
-  
-  hideLoader(); // 'switch off' loader-spinner
+    localStorage.setItem('currentMovies', JSON.stringify(results));
+
+    hideLoader(); // 'switch off' loader-spinner
+    return;
+  } catch {
+    fetchError();
+    hideLoader(); // 'switch off' loader-spinner
+  }
+}
+function fetchError() {
+  refs.errorMessage.innerHTML =
+    '<img src="https://i.postimg.cc/Y0B5jWw7/fetch-Error.png" alt="fetch Error" class="error-img" />';
+  Notify.failure('fetch Error');
   return;
 }
-
-// для картки obj = {
-// adult: false,
-// backdrop_path: "/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg",
-// genre_ids: (3) [878, 12, 28],
-// id: 76600,
-// media_type: "movie",
-// original_language: "en",
-// original_title: "Avatar: The Way of Water",
-// overview: "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure."
-// popularity: 2623.833,
-// poster_path: "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
-// release_date: "2022-12-14",
-// title: "Avatar: The Way of Water",
-// video: false,
-// vote_average: 7.721,
-// vote_count: 4577,
-// }
