@@ -1,36 +1,43 @@
 .film-colection {
-    padding: 20px 0;
+  padding: 20px 0 40px 0;
+
+
+  @media screen and (min-width: 768px) {
+    padding: 60px 0;
+  }
+
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    row-gap: 20px;
+    column-gap: var(--indent);
 
     @media screen and (min-width: 768px) {
-        padding: 60px 0;
+      row-gap: 32px;
+      --indent: 32px;
+      --items: 2;
+      margin-bottom: 60px;
     }
 
-    &__list {
-        display: flex;
-        flex-wrap: wrap;
-        row-gap: 20px;
-        column-gap: var(--indent);
-        min-height: 402px;
-
-        @media screen and (min-width: 768px) {
-            row-gap: 32px;
-            --indent: 32px;
-            --items: 2;
-        }
-
-        @media screen and (min-width: 1280px) {
-            --indent: 15.5px;
-            --items: 3;
-        }
-
+    @media screen and (min-width: 1280px) {
+      --indent: 15.5px;
+      --items: 3;
     }
 
-    &__item {
-        flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
-    }
+  }
+
+  &__item {
+    flex-basis: calc(
+      (100% - var(--indent) * (var(--items) - 1)) / var(--items)
+    );
+  }
 }
+
 
 .error-img {
     margin-right: auto;
     margin-left: auto;
 }
+

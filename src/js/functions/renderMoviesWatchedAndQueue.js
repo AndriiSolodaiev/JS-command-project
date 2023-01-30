@@ -1,37 +1,41 @@
-import { refs, data } from "../refs";
-import { createMarkupMovies } from "./createMarkupMovies";
+import { slice } from 'lodash';
+import { refs, data } from '../refs';
+import { createMarkupMovies } from './createMarkupMovies';
+import { markupPagination } from './pagination';
 
-export function renderMoviesWatchedAndQueue(storageKey, typeOfLibrary) {
-    const moviesArr = JSON.parse(localStorage.getItem(storageKey));
+export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
+  const moviesArr = JSON.parse(localStorage.getItem(storageKey));
 
-    if(moviesArr.length === 0) {
-        refs.libraryMessageContainerEl.innerHTML = `
+  data.typePagination = typeOfLibrary;
+
+  if (moviesArr.length === 0) {
+    refs.libraryMessageContainerEl.innerHTML = `
             <p class='library-message__text'>
                 There's nothing here yet...
             </p>
-        `
-        refs.moviesCollectionLibrary.innerHTML = '';
-    } else {
-        refs.libraryMessageContainerEl.innerHTML = '';
+        `;
+    refs.moviesCollectionLibrary.innerHTML = '';
+    data.totalPage = 0;
+    data.page = 0;
+    markupPagination();
+  } else {
+    const moviesOnPage = 20;
+    let moviesArrOnPage = moviesArr.slice(
+      (page - 1) * moviesOnPage,
+      (page - 1) * moviesOnPage + moviesOnPage
+    );
 
-        const markup = createMarkupMovies(moviesArr);
-        refs.moviesCollectionLibrary.innerHTML = markup;
+    localStorage.setItem('currentMovies', moviesArrOnPage);
 
-        // page = moviesArr.slice(0, 20);
-        // на початку begin = 0, end = 20
-        // кожна наступна сторінка begin + 20, end + 20
+    refs.libraryMessageContainerEl.innerHTML = '';
 
-        // if(!moviesArr) {
-        //     data.page = null;
-        // } else {
-        //     data.page = page;
-        // }
-        
-        data.totalPage = Math.ceil(moviesArr.length / 20);
-        data.typePagination = typeOfLibrary;
+    const markup = createMarkupMovies(moviesArrOnPage);
+    refs.moviesCollectionLibrary.innerHTML = markup;
 
-        // markupPagination(); 
-    }
+    data.totalPage = Math.ceil(moviesArr.length / moviesOnPage);
+    data.page = page;
+    markupPagination();
+  }
 }
 
 //storageKey - 'watchedMovies' or 'queueMovies'

@@ -2,6 +2,7 @@ import { PaginationService } from './paginationService.js';
 import { data, refs } from '../refs';
 import { renderTrendingMoviesPerDay } from './createMarkupGaleryMovies.js';
 import { renderSearchedMovies } from './renderSearchedMovies';
+import { renderMoviesWatchedAndQueue } from './renderMoviesWatchedAndQueue.js';
 
 export function markupPagination() {
   if (data.page === 0) {
@@ -58,23 +59,16 @@ export function onPaginationBtnClick(evt) {
     renderSearchedMovies(data.page, data.searchString);
   }
 
-  // if (data.typePagination === 'watched'){
-  // викликаємо функцію renderMoviesWatched (data.page)
-  //}
+  if (data.typePagination === 'watched') {
+    renderMoviesWatchedAndQueue(data.page, 'watchedMovies', 'watched');
+  }
 
-  // if (data.typePagination === 'queue'){
-  // викликаємо функцію renderMoviesQuieu (data.page)
-  //}
+  if (data.typePagination === 'queue') {
+    renderMoviesWatchedAndQueue(data.page, 'queueMovies', 'queue');
+  }
+
   window.scrollTo({
     top: 0,
     left: 0,
   });
 }
-
-//Функція renderMoviesWatcedAndQueue (page) {
-// робить відмальовку
-// в об'єкт дата записати:
-// data.page =  якщо список фільмів пустий, то сюди записуємо нуль, інакше записуємо значення параметра "page"
-// data.totalPages = total_pages
-// data.typePagination = watched || queue
-// Виклик функції markupPagination ()
