@@ -27,8 +27,10 @@ import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies
 renderTrendingMoviesPerDay(data.page);
 
 
+
 import { openModal } from './functions/modal';
 refs.moviesCollection.addEventListener('click', openModal);
+
 
 // Footer 
 import  {onOpenModalFooterClick, onCloseModalFooterClick, onBackdropClickToClose} from "./functions/mw-footer";
