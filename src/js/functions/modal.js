@@ -32,7 +32,7 @@ export function openModal(event) {
   ////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
 
-  watchTrailer(movieId);
+  
 //   console.log(movieId)
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
 //   console.log(movieStorageArr)
@@ -40,7 +40,7 @@ export function openModal(event) {
   // console.log(movieCardObj);
 
 //Трейлер
-  
+  watchTrailer(movieId);
     
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
