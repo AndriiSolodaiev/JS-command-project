@@ -1,0 +1,115 @@
+// 2) add styles
+
+
+// styles to css file for container and for loader
+
+//   Transparent Overlay
+
+.loader-container {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.loader-container__is-hidden {
+    display: none;
+}
+
+// Absolute Center Spinner
+
+.loader-container__spinner {
+    position: fixed;
+    z-index: 100;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #3d5af1 transparent #3d5af1 transparent;
+    border-radius: 50%;
+    animation: spin-anim 1.2s linear infinite;
+}
+
+@keyframes spin-anim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+// other loader style =============================
+
+
+
+// .loader-container {
+//     display: block;
+//     background-color: rgba(0,0,0,0.3);
+//     height: 100%;
+//     width: 100%;
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     z-index: 50;
+//   }
+
+//   .loader-container__is-hidden{
+//     display: none;
+//   }
+
+//   .loader-container__spinner {
+//     animation: animate 1.5s linear infinite;
+//     clip: rect(0, 80px, 80px, 40px);
+//     height: 80px;
+//     width: 80px;
+//     position: absolute;
+//     left: calc(50% - 40px);
+//     top: calc(50% - 40px);
+//   }
+//   @keyframes animate {
+//     0% {
+//       transform: rotate(0deg)
+//     }
+//     100% {
+//       transform: rotate(220deg)
+//     }
+//   }
+//   .loader-container__spinner:after {
+//     animation: animate2 1.5s ease-in-out infinite;
+//     clip: rect(0, 80px, 80px, 40px);
+//     content:'';
+//     border-radius: 50%;
+//     height: 80px;
+//     width: 80px;
+//     position: absolute;
+//   }
+//   @keyframes animate2 {
+//     0% {
+//       box-shadow: inset #b3dfd8 0 0 0 17px;
+//       transform: rotate(-140deg);
+//     }
+//     50% {
+//       box-shadow: inset #b3dfd8 0 0 0 2px;
+//     }
+//     100% {
+//       box-shadow: inset #b3dfd8 0 0 0 17px;
+//       transform: rotate(140deg);
+//     }
+//   }

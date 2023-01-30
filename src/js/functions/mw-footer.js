@@ -1,24 +1,32 @@
-
-
-const closeModal = document.querySelector("[data-modal-close]")
-const modalFooter = document.querySelector("[data-modal]")
+import {refs} from "../refs";
+const { modalFooter, closeModalFooter, openModalFooter } = refs;
     
-closeModal.addEventListener('click', modalHidden)
-     document.addEventListener("keydown", modalEscape );
-function modalEscape(event) {
-     
-    if (event.code === "Escape") {
-      modalHidden()
-    };
-         
-     }
-function modalHidden() {
-    modalFooter.classList.add("is-hidden")
-    // document.removeEventListener("keydown", modalEscape );
+
+export function onOpenModalFooterClick() {
+    modalFooter.classList.remove("is-hidden")
+    document.addEventListener("keydown", onEscPress );
 }
-export function modalRemoveHidden() {
-     modalFooter.classList.remove("is-hidden") 
-  }
+
+export function onEscPress(evt) {
+    if (evt.code === "Escape") {
+        onCloseModalFooterClick()
+        console.log(evt.code)
+        };
+}
+
+export function onCloseModalFooterClick() {
+    modalFooter.classList.add("is-hidden");
+    document.removeEventListener("keydown", onEscPress)
+    
+
+}
+
+export function onBackdropClickToClose (evt) {
+    if (evt.target === evt.currentTarget) {
+        onCloseModalFooterClick()
+    }
+}
+
 
 
 const team = [

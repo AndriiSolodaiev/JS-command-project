@@ -4,6 +4,10 @@ import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
 import { data, refs } from '../refs';
 import { createGenresObj } from './genres';
 import { markupPagination } from './pagination';
+
+import { showLoader } from './loader';
+import { hideLoader } from './loader';
+
 export function createMarkupGaleryMovies(arr) {
   return arr
     .map(moviesCard => {
@@ -17,6 +21,8 @@ export function createMarkupGaleryMovies(arr) {
 }
 
 export async function renderTrendingMoviesPerDay(page) {
+  showLoader(); // 'switch on' loader-spinner
+
   const { total_pages, results } = await fetchTrendingMoviesPerDay(page);
   const markup = await createMarkupGaleryMovies(results);
   refs.moviesCollection.innerHTML = await markup;
@@ -26,8 +32,9 @@ export async function renderTrendingMoviesPerDay(page) {
   data.typePagination = 'trending';
   markupPagination();
 
-
   localStorage.setItem('currentMovies', JSON.stringify(results));
+  
+  hideLoader(); // 'switch off' loader-spinner
   return;
 }
 

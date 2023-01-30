@@ -1,7 +1,6 @@
 import { PaginationService } from './paginationService.js';
 import { data, refs } from '../refs';
 import { renderTrendingMoviesPerDay } from './createMarkupGaleryMovies.js';
-import { fetchTrendingMoviesPerDay } from '../requests/fetchTrendingMovies';
 import { renderSearchedMovies } from './renderSearchedMovies';
 
 export function markupPagination() {
@@ -9,23 +8,29 @@ export function markupPagination() {
     refs.paginationEl.innerHTML = '';
     return;
   }
-  let isMobile = false;
-  let pagination = new PaginationService(data.page, data.totalPage, isMobile);
+  let pageWidth = document.documentElement.scrollWidth;
+  let isMobile = pageWidth < 768 ? true : false;
 
+  let pagination = new PaginationService(data.page, data.totalPage, isMobile);
   refs.paginationEl.innerHTML = pagination
     .get()
     .map(page => {
       let buttonActiveClass =
         page === data.page ? 'pagination__button_active' : '';
-      let pageModification =
+      let paginationHoverClass =
+        page !== data.page && page !== '...' ? 'pagination__button_hover' : '';
+      let paginationArrow =
+        page == '=>' || page == '<=' ? 'pagination__button-arrow' : '';
+
+      let pageDataSet =
         page == '<=' ? data.page - 1 : page == '=>' ? data.page + 1 : page;
 
-      // let captionButton =
-      return `<button type="button" class="pagination__button pagination_button-arrow_left ${buttonActiveClass}" data-page="${pageModification}">${page}</button>`;
+      let pageShow = page == '<=' ? '&#8592;' : page == '=>' ? '&#8594;' : page;
+
+      return `<button type="button"  class="pagination__button ${buttonActiveClass} ${paginationHoverClass} ${paginationArrow}" data-page="${pageDataSet}">
+    ${pageShow}</button>`;
     })
     .join('');
-
-  return;
 }
 
 export function onPaginationBtnClick(evt) {
@@ -38,9 +43,11 @@ export function onPaginationBtnClick(evt) {
   if (evt.target.classList.contains('pagination__button_active')) {
     return;
   }
+
   if (!page) {
     return;
   }
+
   data.page = Number(page);
 
   if (data.typePagination === 'trending') {
@@ -58,6 +65,10 @@ export function onPaginationBtnClick(evt) {
   // if (data.typePagination === 'queue'){
   // викликаємо функцію renderMoviesQuieu (data.page)
   //}
+  window.scrollTo({
+    top: 0,
+    left: 0,
+  });
 }
 
 //Функція renderMoviesWatcedAndQueue (page) {
