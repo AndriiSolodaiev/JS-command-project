@@ -9,3 +9,9 @@ refs.openQueueBtnEl.addEventListener('click', () => renderMoviesWatchedAndQueue(
 refs.openWatchedBtnEl.addEventListener('click', () => changeCurrentBtnOfLibrary(refs.openWatchedBtnEl, refs.openQueueBtnEl));
 refs.openQueueBtnEl.addEventListener('click', () => changeCurrentBtnOfLibrary(refs.openQueueBtnEl, refs.openWatchedBtnEl));
 refs.moviesCollectionLibrary.addEventListener('click', openModal);
+
+// Footer 
+import  {onOpenModalFooterClick, onCloseModalFooterClick, onBackdropClickToClose} from "./functions/mw-footer";
+refs.openModalFooter.addEventListener("click", onOpenModalFooterClick);
+refs.closeModalFooter.addEventListener('click', onCloseModalFooterClick);
+refs.modalFooter.addEventListener("click", onBackdropClickToClose);
