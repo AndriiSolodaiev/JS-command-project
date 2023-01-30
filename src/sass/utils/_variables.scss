@@ -1,15 +1,17 @@
 :root {
-    --accent-color: #FF6B01;
-    --base-bg-color: #fff;
+  --accent-color: #ff6b01;
+  --base-bg-color: #fff;
 
+  --pagination-btn-hover: #d7d7d7;
+  --pagination-btn-arrow-bgc: #f7f7f7;
 
-    --primary-font: 'Roboto', sans-serif;
-    // базовий шрифт в проекті - Roboto
-    --title-font: 'Seymour One', sans-serif;
+  --primary-font: 'Roboto', sans-serif;
+  // базовий шрифт в проекті - Roboto
+  --title-font: 'Seymour One', sans-serif;
 
-    --transition-prop: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    --indent: 0;
-    --items: 1;
+  --transition-prop: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --indent: 0;
+  --items: 1;
 }
 
 $main-font: 'Roboto', sans-serif;
@@ -38,9 +40,8 @@ $bg-team-member: rgba(33, 66, 151, 0.9);
 $box-shadow-color: #ff6b0199;
 $shadow-modal: 5px 6px 4px rgba(255, 103, 1, 0.765);
 $shadow-team-modal: 0px 1px 3px rgba(255, 107, 1, 0.6),
-    0px 1px 1px rgba(255, 107, 8, 0.37), 0px 2px 1px rgba(255, 107, 1, 0.6);
+  0px 1px 1px rgba(255, 107, 8, 0.37), 0px 2px 1px rgba(255, 107, 1, 0.6);
 $shadow-team-member: 15px -4px 25px 3px rgba(0, 0, 0, 0.56);
-
 
 // Flex-basis
 

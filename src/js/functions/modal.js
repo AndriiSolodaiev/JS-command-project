@@ -6,46 +6,37 @@ import { watchTrailer } from './trailer';
 
 export function openModal(event) {
   event.preventDefault();
+
   ////слухач на Escape
-  document.addEventListener("keydown", (event) => {
-    if (event.code === "Escape") {
-      modalMovieCard.hidden = true
-    };
-  }); 
-  if(refs.openQueueBtnEl) {
-    document.addEventListener("keydown", () => {
-      if(refs.openQueueBtnEl.classList.contains('btn__current')) {
-        renderMoviesWatchedAndQueue('queueMovies', 'queue');
-      } else {
-        renderMoviesWatchedAndQueue('watchedMovies', 'watched');
-      }
-    });
+  document.addEventListener('keydown', event => {
+    if (event.code === 'Escape') {
+      modalMovieCard.hidden = true;
+    }
+  });
+  document.addEventListener('keydown', () => {
+    if (refs.openQueueBtnEl.classList.contains('btn__current')) {
+      renderMoviesWatchedAndQueue(1, 'queueMovies', 'queue');
+    } else {
+      renderMoviesWatchedAndQueue(1, 'watchedMovies', 'watched');
+    }
+  });
+
+
+  ////перевірка чи таргет = li
+  const modalMovieCard = document.querySelector('[mw-movie-card]');
+  modalMovieCard.hidden = false;
+  if (!event.target.closest('li')) {
+    return;
   }
 
-  console.log(refs);
-    
-  ////перевірка чи таргет = li
-  const modalMovieCard = document.querySelector("[mw-movie-card]");
-  modalMovieCard.hidden = false;
-  if (!event.target.closest("li")) {
-    return
-    };
-    
   ////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
-  console.log(movieId)
-
-
-//Трейлер
-  watchTrailer(movieId);
-  // console.log(movieId)
-
-
-
+//   console.log(movieId)
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
 //   console.log(movieStorageArr)
   let movieCardObj = movieStorageArr.find(movie => movie.id === Number(movieId))
   // console.log(movieCardObj);
+    
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
     <button class="mw-movie__btn-close" type="button" mw-movie-close>
@@ -59,7 +50,8 @@ export function openModal(event) {
     <div class="mw-movie__poster">
       <img
         class="mw-movie__image"
-        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieCardObj.poster_path}"
+        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieCardObj.poster_path
+    }"
         alt="Movie"
         width="375"
         height="478"
@@ -81,17 +73,25 @@ export function openModal(event) {
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Vote / Votes</td>
           <td class="mw-movie__info-table-row-data">
-            <span class="mw-movie__info-table-rating">${movieCardObj.vote_average.toFixed(1)}</span
-            ><span class="mw-movie__info-table-slash"> / </span>${movieCardObj.vote_count}
+            <span class="mw-movie__info-table-rating">${movieCardObj.vote_average.toFixed(
+              1
+            )}</span
+            ><span class="mw-movie__info-table-slash"> / </span>${
+              movieCardObj.vote_count
+            }
           </td>
         </tr>
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Popularity</td>
-          <td class="mw-movie__info-table-row-data">${movieCardObj.popularity.toFixed(1)}</td>
+          <td class="mw-movie__info-table-row-data">${movieCardObj.popularity.toFixed(
+            1
+          )}</td>
         </tr>
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Original Title</td>
-          <td class="mw-movie__info-table-row-data">${movieCardObj.original_title}</td>
+          <td class="mw-movie__info-table-row-data">${
+            movieCardObj.original_title
+          }</td>
         </tr>
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Genres</td>
@@ -112,11 +112,12 @@ export function openModal(event) {
       </ul> 
     </div>
   </div>`;
-    
+
   ////слухач на кнопку закриття
-  const closeMovieCard = document.querySelector("[mw-movie-close]")
-  closeMovieCard.addEventListener("click", () =>
-  {modalMovieCard.hidden = true})
+  const closeMovieCard = document.querySelector('[mw-movie-close]');
+  closeMovieCard.addEventListener('click', () => {
+    modalMovieCard.hidden = true;
+  });
 
   //оновлення вмісту сторінку по закриттю модалки
   if(refs.openQueueBtnEl) {
@@ -129,47 +130,54 @@ export function openModal(event) {
     });
   }
 
+
   const modalRefs = {
-      addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
-      addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
+    addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
+    addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
   };
 
-  if(JSON.parse(localStorage.getItem('watchedMovies'))) {
+  if (JSON.parse(localStorage.getItem('watchedMovies'))) {
     library.watchedMovies = JSON.parse(localStorage.getItem('watchedMovies'));
   }
-  
-  if(JSON.parse(localStorage.getItem('queueMovies'))) {
+
+  if (JSON.parse(localStorage.getItem('queueMovies'))) {
     library.queueMovies = JSON.parse(localStorage.getItem('queueMovies'));
   }
 
   checkModalBtnName(
     movieCardObj,
-    modalRefs.addToWatchedBtnEl, 
+    modalRefs.addToWatchedBtnEl,
     'watched',
     'watchedMovies'
   );
 
   checkModalBtnName(
-    movieCardObj,  
-    modalRefs.addToQueueBtnEl, 
-    'queue', 
+    movieCardObj,
+    modalRefs.addToQueueBtnEl,
+    'queue',
     'queueMovies'
   );
 
   // слухачі подій на кнопки add to watched, add to queue
-  modalRefs.addToWatchedBtnEl.addEventListener('click', () => onModalLibraryBtnClick(
-    movieCardObj, 
-    library.watchedMovies, 
-    modalRefs.addToWatchedBtnEl, 
-    'watched', 
-    'watchedMovies'));
+  modalRefs.addToWatchedBtnEl.addEventListener('click', () =>
+    onModalLibraryBtnClick(
+      movieCardObj,
+      library.watchedMovies,
+      modalRefs.addToWatchedBtnEl,
+      'watched',
+      'watchedMovies'
+    )
+  );
 
-  modalRefs.addToQueueBtnEl.addEventListener('click', () => onModalLibraryBtnClick(
-    movieCardObj, 
-    library.queueMovies, 
-    modalRefs.addToQueueBtnEl, 
-    'queue', 
-    'queueMovies'));
+  modalRefs.addToQueueBtnEl.addEventListener('click', () =>
+    onModalLibraryBtnClick(
+      movieCardObj,
+      library.queueMovies,
+      modalRefs.addToQueueBtnEl,
+      'queue',
+      'queueMovies'
+    )
+  );
 }
 /////////////
 // Доробити:

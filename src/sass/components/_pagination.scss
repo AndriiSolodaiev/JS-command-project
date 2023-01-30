@@ -1,7 +1,6 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
 }
 
 .pagination__button {
@@ -14,19 +13,20 @@
   border: 0;
   border-radius: 5px;
   cursor: default;
+  transition: background-color var(--transition-prop);
 
   &_hover:hover {
-    background-color: #d7d7d7;
+    background-color: var(--pagination-btn-hover);
     cursor: pointer;
   }
 
   &_active {
-    background-color: #ff6b08;
+    background-color: var(--accent-color);
     cursor: default;
-    color: #fff;
+    color: var(--base-bg-color);
   }
 
   &-arrow {
-    background-color: #f7f7f7;
+    background-color: var(--pagination-btn-arrow-bgc);
   }
 }

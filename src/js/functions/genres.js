@@ -1,33 +1,26 @@
 import { fetchGenres } from '../requests/fetchGenres';
-// import { refs } from '../refs';
-
-import { showLoader } from './loader';
-import { hideLoader } from './loader';
-
+import { createMarkupGaleryMovies } from './createMarkupGaleryMovies';
+import { showLoader, hideLoader } from './loader';
+import { fetchError } from './createMarkupGaleryMovies';
 export async function createGenresObj() {
   try {
     showLoader(); // 'switch on' loader-spinner
-
     const allGenres = {};
     const data = await fetchGenres();
-
     data.map(async ({ id, name }) => await (allGenres[id] = name));
     localStorage.setItem('genres', JSON.stringify(allGenres));
-
     hideLoader(); // 'switch off' loader-spinner
     return;
   } catch {
-    errorMessage();
+    console.log('fetchGenres Error');
+    // fetchError();
+    hideLoader();
     return;
   }
 }
-function errorMessage() {
-  alert('запит не здійснений');
-}
 
 // ця функція створює такий об'єкт
-// дістати можна - refs.genresObj[id]
-// genresObj = {
+//  {
 //   12: 'Adventure',
 //   14: 'Fantasy',
 //   16: 'Animation',
