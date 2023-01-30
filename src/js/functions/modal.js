@@ -1,11 +1,11 @@
 import { onModalLibraryBtnClick } from './onModalLibraryBtnClick';
-import { refs, library } from './../refs';
+import { refs, library, data } from './../refs';
 import { checkModalBtnName } from './checkModalBtnName';
 import { renderMoviesWatchedAndQueue } from './renderMoviesWatchedAndQueue';
+import { watchTrailer } from './trailer';
 
 export function openModal(event) {
   event.preventDefault();
-    
   ////слухач на Escape
   document.addEventListener("keydown", (event) => {
     if (event.code === "Escape") {
@@ -33,12 +33,19 @@ export function openModal(event) {
     
   ////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
-//   console.log(movieId)
+  console.log(movieId)
+
+
+//Трейлер
+  watchTrailer(movieId);
+  // console.log(movieId)
+
+
+
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
 //   console.log(movieStorageArr)
   let movieCardObj = movieStorageArr.find(movie => movie.id === Number(movieId))
   // console.log(movieCardObj);
-    
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
     <button class="mw-movie__btn-close" type="button" mw-movie-close>
@@ -49,15 +56,24 @@ export function openModal(event) {
         ></use>
       </svg>
     </button>
-    <div>
+    <div class="mw-movie__poster">
       <img
         class="mw-movie__image"
-        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieCardObj.poster_path
-    }"
+        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieCardObj.poster_path}"
         alt="Movie"
         width="375"
         height="478"
       />
+      <button class='btn-trailer' type='button' aria-label='play movie trailer'>
+      <svg class='btn-trailer__svg' width='68' height='48' viewBox='0 0 68 48'>
+        <path
+          class='btn-trailer__path'
+          d='M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z'
+          fill='#212121'
+        ></path>
+        <path d='M 45,24 27,14 27,34' fill='#fff'></path>
+      </svg>
+    </button>
     </div>
     <div>
       <h2 class="mw-movie__info-heading">${movieCardObj.title}</h2>
@@ -93,7 +109,7 @@ export function openModal(event) {
         <li>
           <button class="mw-movie__btn-addqueue" type="button">Add to queue</button>
         </li>
-      </ul>
+      </ul> 
     </div>
   </div>`;
     
@@ -112,7 +128,6 @@ export function openModal(event) {
       }
     });
   }
-
 
   const modalRefs = {
       addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),

@@ -18,7 +18,7 @@ export function createMoviesCardMarkup(movies) {
   
   let voteAverage = vote_average;
   if (voteAverage === 0.0) {
-    voteAverage = `+`
+    voteAverage = `N/A`
   } else {
     voteAverage = vote_average.toFixed(1)
   }
