@@ -1,18 +1,31 @@
-
-
-const closeModal = document.querySelector("[data-modal-close]")
-const modalFooter = document.querySelector("[data-modal]")
+import {refs} from "../refs";
+const { modalFooter, closeModalFooter, openModalFooter } = refs;
     
-closeModal.addEventListener('click', toggleModal)
-     document.addEventListener("keydown", (event) => {
-    if (event.code === "Escape") {
-      toggleModal()
-    };
-  });
-export function toggleModal() {
-    modalFooter.classList.toggle("is-hidden");
-    console.log('ads')
+
+export function onOpenModalFooterClick() {
+    modalFooter.classList.remove("is-hidden")
+    document.addEventListener("keydown", onEscPress );
+}
+
+export function onEscPress(evt) {
+    if (evt.code === "Escape") {
+        onCloseModalFooterClick()
+        console.log(evt.code)
+        };
+}
+
+export function onCloseModalFooterClick() {
+    modalFooter.classList.add("is-hidden");
+    document.removeEventListener("keydown", onEscPress)
+    
+}
+
+export function onBackdropClickToClose (evt) {
+    if (evt.target === evt.currentTarget) {
+        onCloseModalFooterClick()
     }
+}
+
 
 const team = [
     {
