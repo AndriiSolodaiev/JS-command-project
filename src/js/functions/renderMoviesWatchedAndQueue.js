@@ -25,8 +25,6 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
       (page - 1) * moviesOnPage + moviesOnPage
     );
 
-    localStorage.setItem('currentMovies', moviesArrOnPage);
-
     refs.libraryMessageContainerEl.innerHTML = '';
 
     const markup = createMarkupMovies(moviesArrOnPage);
@@ -35,6 +33,8 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     data.totalPage = Math.ceil(moviesArr.length / moviesOnPage);
     data.page = page;
     markupPagination();
+    
+    localStorage.setItem('currentMovies', JSON.stringify(moviesArrOnPage));
   }
 }
 
