@@ -10,6 +10,7 @@
         flex-wrap: wrap;
         row-gap: 20px;
         column-gap: var(--indent);
+        min-height: 402px;
 
         @media screen and (min-width: 768px) {
             row-gap: 32px;
@@ -27,4 +28,9 @@
     &__item {
         flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
     }
+}
+
+.error-img {
+    margin-right: auto;
+    margin-left: auto;
 }
