@@ -1,6 +1,6 @@
 import * as basicLightbox from 'basiclightbox'
 import axios from 'axios';
-import { API_KEY } from '../index';
+import { API_KEY } from '../requests/fetchBySearchString';
 
 let trailer;
 
