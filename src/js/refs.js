@@ -2,7 +2,7 @@ export const refs = {
   errorMessage: document.querySelector('.js-error-message'),
   moviesCollection: document.querySelector('.js-films-list'),
   searchError: document.querySelector('.js-search-error'),
-  openModal: document.querySelector('[data-modal-open]'),
+
   form: document.querySelector('.js-search-form'),
   input: document.querySelector('.js-search-input'),
   moviesCollectionLibrary: document.querySelector('.js-library-films__list'),
@@ -18,6 +18,11 @@ export const refs = {
   // addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
 
   loaderContainer: document.querySelector('.loader-container'),
+
+  closeModalFooter: document.querySelector("[data-modal-close]"),
+  modalFooter: document.querySelector("[data-modal]"),
+  openModalFooter: document.querySelector("[data-modal-open]")
+
 };
 
 //масиви з об'єктами фільмів my library, що будуть збережені до localStorage

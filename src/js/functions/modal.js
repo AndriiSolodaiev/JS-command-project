@@ -22,7 +22,7 @@ export function openModal(event) {
     });
   }
 
-  console.log(refs);
+  
     
   ////перевірка чи таргет = li
   const modalMovieCard = document.querySelector("[mw-movie-card]");
