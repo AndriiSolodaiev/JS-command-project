@@ -21,7 +21,7 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     data.totalPage = 0;
     data.page = 0;
     markupPagination();
-    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
 
   } else {
     const moviesOnPage = 20;
@@ -40,7 +40,7 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     markupPagination();
     
     localStorage.setItem('currentMovies', JSON.stringify(moviesArrOnPage));
-    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
   }
 }
 

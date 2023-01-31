@@ -14,7 +14,7 @@ export function openModal(event) {
   return;}
 //////контейнер куди будемо вставляти модалку. також по кліку на ньому буде закриття модалки.
   const modalMovieCard = document.querySelector('[mw-movie-card]');
-  modalMovieCard.hidden = false;
+  modalMovieCard.classList.remove("is-hidden");
 
 ////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
@@ -111,7 +111,7 @@ let modalPoster = ``;
   document.addEventListener('keydown', onEscape);
   function onEscape(event) {
       if (event.code === 'Escape') {
-        modalMovieCard.hidden = true;
+        modalMovieCard.classList.add("is-hidden");
         document.removeEventListener('keydown', onEscape)
     }
   }
@@ -120,7 +120,7 @@ let modalPoster = ``;
   const closeMovieCard = document.querySelector('[mw-movie-close]');
   closeMovieCard.addEventListener('click', onCloseClick);
   function onCloseClick() {
-    modalMovieCard.hidden = true;
+    modalMovieCard.classList.add("is-hidden");
     closeMovieCard.removeEventListener('click', onCloseClick);
   }
 
@@ -128,7 +128,7 @@ let modalPoster = ``;
   document.addEventListener("click", onOuterClick); 
   function onOuterClick(event) {
     if (event.target === modalMovieCard) {
-      modalMovieCard.hidden = true;
+      modalMovieCard.classList.add("is-hidden");
       document.removeEventListener("click", onOuterClick);
     };
   }

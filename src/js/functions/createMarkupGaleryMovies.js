@@ -36,12 +36,12 @@ export async function renderTrendingMoviesPerDay(page) {
 
     localStorage.setItem('currentMovies', JSON.stringify(results));
 
-    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
 
     return;
   } catch {
     fetchError();
-    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
   }
 }
 function fetchError() {

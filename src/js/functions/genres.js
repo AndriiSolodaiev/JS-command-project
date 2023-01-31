@@ -9,12 +9,12 @@ export async function createGenresObj() {
     const data = await fetchGenres();
     data.map(async ({ id, name }) => await (allGenres[id] = name));
     localStorage.setItem('genres', JSON.stringify(allGenres));
-    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
     return;
   } catch {
     console.log('fetchGenres Error');
     // fetchError();
-    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
     return;
   }
 }
