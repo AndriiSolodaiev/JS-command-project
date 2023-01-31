@@ -3,7 +3,6 @@ import { refs, library} from './../refs';
 import { checkModalBtnName } from './checkModalBtnName';
 import { watchTrailer } from './trailer';
 import { setMovieGenresNames } from "./card";
-import { renderLibraryByCloseModal } from './renderLibraryByCloseModal';
 
 export function openModal(event) {
   event.preventDefault();
@@ -117,11 +116,6 @@ let modalPoster = ``;
     }
   }
 
-//оновлення вмісту сторінку по закриттю модалки при keydown Esc
-if (refs.openQueueBtnEl) {
-  document.addEventListener('keydown', renderLibraryByCloseModal);
-}
-
 ///////слухач на кнопку закриття
   const closeMovieCard = document.querySelector('[mw-movie-close]');
   closeMovieCard.addEventListener('click', onCloseClick);
@@ -129,11 +123,6 @@ if (refs.openQueueBtnEl) {
     modalMovieCard.hidden = true;
     closeMovieCard.removeEventListener('click', onCloseClick);
   }
-
-//оновлення вмісту сторінкИ по закриттю модалки при кріці на Х
-if(refs.openQueueBtnEl) {
-  closeMovieCard.addEventListener("click", renderLibraryByCloseModal);
-}
 
 //////слухач на клік поза карткою
   document.addEventListener("click", onOuterClick); 
@@ -143,16 +132,6 @@ if(refs.openQueueBtnEl) {
       document.removeEventListener("click", onOuterClick);
     };
   }
-
-//оновлення вмісту сторінку по закриттю модалки при кліці на backdrop
-if(refs.openQueueBtnEl) {
-  document.addEventListener("click", (event) => {
-    if (event.target === modalMovieCard) {
-      renderLibraryByCloseModal();
-    };
-  });
-};
-
 
 //////Трейлер
   watchTrailer(movieId);
