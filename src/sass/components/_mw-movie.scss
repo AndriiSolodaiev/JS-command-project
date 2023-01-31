@@ -39,9 +39,11 @@
     margin-bottom: 20px;
     border-radius: 5px;
     cursor: pointer;
+    // object-fit: contain;
 }
 .mw-movie__info-table {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    /// margin-bottom має бути 20, пишу 16 бо додав відступи між елементами тиблиці по 4 пікселя
     width: 100%;
     border-collapse: separate;
         &:not(:last-child){
@@ -64,6 +66,7 @@
     font-size: 12px;
     line-height: 167%;
     margin-bottom: 20px;
+    overflow-y: auto;
 }
 .mw-movie__info-table-rating {
     background-color: #FF6B01;
@@ -152,6 +155,9 @@
         max-width: 264px ;
         max-height: 100%;
         margin-bottom: 0px;
+    }
+    .mw-movie__info-table-description {
+        max-height: 210px;
     }
     .mw-movie__btn-list {
         display: flex;

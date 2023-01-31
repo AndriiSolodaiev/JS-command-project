@@ -15,12 +15,28 @@ export function openModal(event) {
   const modalMovieCard = document.querySelector('[mw-movie-card]');
   modalMovieCard.hidden = false;
 
+  
+
 ////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
   let movieCardObj = movieStorageArr.find(movie => movie.id === Number(movieId))
   console.log(movieCardObj)
 
+////перевірка чи має фільм середню оцінку, якщо ні то N/A  
+  let voteAverage = movieCardObj.vote_average;
+  if (voteAverage === 0.0) {
+    voteAverage = `N/A`
+  } else {
+    voteAverage = movieCardObj.vote_average.toFixed(1)
+  }
+////перевірка чи має фільм голоси, якщо ні то N/A 
+  let voteCount = movieCardObj.vote_count;
+  if (voteCount === 0.0) {
+    voteCount = `N/A`
+  } else {
+    voteCount = movieCardObj.vote_count
+  }
 
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
@@ -55,11 +71,9 @@ export function openModal(event) {
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Vote / Votes</td>
           <td class="mw-movie__info-table-row-data">
-            <span class="mw-movie__info-table-rating">${movieCardObj.vote_average.toFixed(
-              1
-            )}</span
+            <span class="mw-movie__info-table-rating">${voteAverage}</span
             ><span class="mw-movie__info-table-slash"> / </span> <span class="mw-movie__info-table-votes">${
-              movieCardObj.vote_count
+              voteCount
             }</span>
           </td>
         </tr>
