@@ -3,53 +3,36 @@ import { refs, library, data } from './../refs';
 import { checkModalBtnName } from './checkModalBtnName';
 import { renderMoviesWatchedAndQueue } from './renderMoviesWatchedAndQueue';
 import { watchTrailer } from './trailer';
+import { setMovieGenresNames } from "./card"
 
 export function openModal(event) {
   event.preventDefault();
 
-  ////слухач на Escape
-  document.addEventListener('keydown', event => {
-    if (event.code === 'Escape') {
-      modalMovieCard.hidden = true;
-    }
-  });
-  document.addEventListener('keydown', () => {
-    if (refs.openQueueBtnEl.classList.contains('btn__current')) {
-      renderMoviesWatchedAndQueue(1, 'queueMovies', 'queue');
-    } else {
-      renderMoviesWatchedAndQueue(1, 'watchedMovies', 'watched');
-    }
-  });
-
-
-  ////перевірка чи таргет = li
+///////перевірка чи таргет = li
+  if (!event.target.closest('li')) {
+  return;}
+//////контейнер куди будемо вставляти модалку. також по кліку на ньому буде закриття модалки.
   const modalMovieCard = document.querySelector('[mw-movie-card]');
   modalMovieCard.hidden = false;
-  if (!event.target.closest('li')) {
-    return;
-  }
 
-  ////витягаємо потрібний нам об'єкт з масиву об'єктів
+////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
 
-  
-//   console.log(movieId)
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
-//   console.log(movieStorageArr)
   let movieCardObj = movieStorageArr.find(movie => movie.id === Number(movieId))
-  // console.log(movieCardObj);
+  console.log(movieCardObj)
+
+
 
 //Трейлер
   watchTrailer(movieId);
     
+
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
     <button class="mw-movie__btn-close" type="button" mw-movie-close>
       <svg class="mw-movie__icon-close">
-        <use
-          aria-label="close icon"
-          href="./sass/img/sprite.svg#icon-cross"
-        ></use>
+        <path d="M23.733 10.304l-1.504-1.504-5.963 5.963-5.963-5.963-1.504 1.504 5.963 5.963-5.963 5.963 1.504 1.504 5.963-5.963 5.963 5.963 1.504-1.504-5.963-5.963 5.963-5.963z"></path>
       </svg>
     </button>
     <div class="mw-movie__poster">
@@ -81,9 +64,9 @@ export function openModal(event) {
             <span class="mw-movie__info-table-rating">${movieCardObj.vote_average.toFixed(
               1
             )}</span
-            ><span class="mw-movie__info-table-slash"> / </span>${
+            ><span class="mw-movie__info-table-slash"> / </span> <span class="mw-movie__info-table-votes">${
               movieCardObj.vote_count
-            }
+            }</span>
           </td>
         </tr>
         <tr class="mw-movie__info-table-row">
@@ -100,11 +83,11 @@ export function openModal(event) {
         </tr>
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Genres</td>
-          <td class="mw-movie__info-table-row-data">${movieCardObj.genres}</td>
+          <td class="mw-movie__info-table-row-data">${setMovieGenresNames(movieCardObj.genre_ids)}</td>
         </tr>
       </table>
       <p class="mw-movie__info-table-description">
-        ABOUT <br />
+        ABOUT <br>
         ${movieCardObj.overview}
       </p>
       <ul class="mw-movie__btn-list">
@@ -118,12 +101,32 @@ export function openModal(event) {
     </div>
   </div>`;
 
-  ////слухач на кнопку закриття
-  const closeMovieCard = document.querySelector('[mw-movie-close]');
-  closeMovieCard.addEventListener('click', () => {
-    modalMovieCard.hidden = true;
-  });
+///////слухач на Escape
+  document.addEventListener('keydown', onEscape);
+  function onEscape(event) {
+      if (event.code === 'Escape') {
+        modalMovieCard.hidden = true;
+        document.removeEventListener('keydown', onEscape)
+    }
+  }
+  //оновлення вмісту сторінку по закриттю модалки
+  if (refs.openQueueBtnEl) {
+    document.addEventListener('keydown', () => {
+      if (refs.openQueueBtnEl.classList.contains('btn__current')) {
+        renderMoviesWatchedAndQueue(1, 'queueMovies', 'queue');
+      } else {
+        renderMoviesWatchedAndQueue(1, 'watchedMovies', 'watched');
+      }
+    });
+  }
 
+///////слухач на кнопку закриття
+  const closeMovieCard = document.querySelector('[mw-movie-close]');
+  closeMovieCard.addEventListener('click', onCloseClick);
+  function onCloseClick() {
+    modalMovieCard.hidden = true;
+    closeMovieCard.removeEventListener('click', onCloseClick);
+  }
   //оновлення вмісту сторінку по закриттю модалки
   if(refs.openQueueBtnEl) {
     closeMovieCard.addEventListener("click", () => {
@@ -135,7 +138,28 @@ export function openModal(event) {
     });
   }
 
+//////слухач на клік поза карткою
+  document.addEventListener("click", onOuterClick); 
+  function onOuterClick(event) {
+    if (event.target === modalMovieCard) {
+      modalMovieCard.hidden = true;
+      document.removeEventListener("click", onOuterClick);
+    };
+  }
+  if(refs.openQueueBtnEl) {
+    closeMovieCard.addEventListener("click", () => {
+      if(refs.openQueueBtnEl.classList.contains('btn__current')) {
+        renderMoviesWatchedAndQueue('queueMovies', 'queue');
+      } else {
+        renderMoviesWatchedAndQueue('watchedMovies', 'watched');
+      }
+    });
+  }
 
+//////Трейлер
+  watchTrailer(movieId);
+
+////////Олександра
   const modalRefs = {
     addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
     addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
@@ -186,9 +210,9 @@ export function openModal(event) {
 }
 /////////////
 // Доробити:
-// 0. Додати жанри
-// 1. зняти слухач подій з escape
-// 2. закриття модалки по кліку поза модалкою
-// 3. куди ділась svg
-// 4. фіналізувати стилі
+// --0. Додати жанри
+// --1. зняти слухач подій з escape (зняв усі слухачі закриття)
+// --2. закриття модалки по кліку поза модалкою   
+// --3. куди ділась svg (закинув інлайн)
+// --4. фіналізувати стилі (питання чи кріпити кнопки абсолютами)
 // 5. може якась затримка для завантаженя фото
