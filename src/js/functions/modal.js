@@ -1,5 +1,5 @@
 import { onModalLibraryBtnClick } from './onModalLibraryBtnClick';
-import { refs, library, data } from './../refs';
+import { refs, library} from './../refs';
 import { checkModalBtnName } from './checkModalBtnName';
 import { watchTrailer } from './trailer';
 import { setMovieGenresNames } from "./card";
@@ -7,6 +7,8 @@ import { renderLibraryByCloseModal } from './renderLibraryByCloseModal';
 
 export function openModal(event) {
   event.preventDefault();
+
+
 
 ///////перевірка чи таргет = li
   if (!event.target.closest('li')) {
@@ -21,13 +23,19 @@ export function openModal(event) {
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
   let movieCardObj = movieStorageArr.find(movie => movie.id === Number(movieId))
  
-
-
-
 //Трейлер
   watchTrailer(movieId);
-    
 
+
+
+    
+let modalPoster = ``;
+        if (movieCardObj.poster_path) {
+          modalPoster = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieCardObj.poster_path}`;
+        } else {
+          modalPoster =
+            'https://studentlegallounge.humboldt.edu/sites/default/files/styles/panopoly_image_original/public/image-coming-soon.jpg?itok=e-RY5zkr';
+  }
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
     <button class="mw-movie__btn-close" type="button" mw-movie-close>
@@ -37,9 +45,8 @@ export function openModal(event) {
     </button>
     <div class="mw-movie__poster">
       <img
-        class="mw-movie__image"
-        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieCardObj.poster_path
-    }"
+        class="mw-movie__image mw-movie__image--trailer"
+        src="${modalPoster}"
         alt="Movie"
         width="375"
         height="478"

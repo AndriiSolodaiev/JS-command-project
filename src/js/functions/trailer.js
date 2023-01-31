@@ -26,7 +26,7 @@ export function watchTrailer(id)
 function fetchTrailer(movieId) {
   return axios
     .get(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`,
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&`,
     )
     .then(response => response.data)
     .then(data => {
@@ -43,7 +43,11 @@ function renderTrailer(data) {
   const openKey = data.find((e) => e.key);
 
   if (!openKey) {
-    document.querySelector('.btn-trailer').classList.add('visually-hidden')
+    document.querySelector('.mw-movie__poster').classList.remove('mw-movie__poster');
+    document.querySelector('.mw-movie__image--trailer').classList.remove('mw-movie__image--trailer');
+    document.querySelector('.btn-trailer').classList.add('visually-hidden');
+    const remove = document.querySelector('.mw-movie__image--trailer')
+    remove.removeEventListener('click', () => { trailer.show() });
     
     return
   } else {
@@ -57,12 +61,13 @@ function creatTrailerLink(key) {
 trailer = basicLightbox.create(`<iframe width="320" height="240" src='https://www.youtube.com/embed/${key}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`);
 
   setTimeout(() => {
-    const trailerBtn = document.querySelector('.mw-movie__image');
+    const trailerBtn = document.querySelector('.mw-movie__image--trailer');
     
     trailerBtn.addEventListener('click', () => {
      
        trailer.show()
     });
-  }, 300);
-
+  }, 200);
+  const remove = document.querySelector('.mw-movie__image--trailer')
+remove.removeEventListener('click', () => {trailer.show()});
 }
