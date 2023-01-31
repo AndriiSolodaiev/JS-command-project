@@ -11,6 +11,12 @@
 </head>
 
 <body>
+  <div class="loader-container loader-container__is-hidden">
+    <svg class="loader-container__spinner">
+      <use href="./sass/img/sprite.svg#icon-film-reel"></use>
+    </svg>
+  </div>
+
   <header class="header header__img">
     <div class="container">
       <div class="header__container">
@@ -49,10 +55,6 @@
   </header>
   
   <main>
-    <!-- added loader markup to section-->
-    <div class="loader-container loader-container__is-hidden">
-      <div class="loader-container__spinner"></div>
-    </div>
     <section class="film-colection"> 
       <div class="container">
         <ul class="film-colection__list js-films-list">

@@ -14,6 +14,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
+    z-index: 50;
 }
 
 .loader-container__is-hidden {
@@ -24,9 +25,9 @@
 
 .loader-container__spinner {
     position: fixed;
-    z-index: 100;
-    height: 2em;
-    width: 2em;
+    z-index: 75;
+    height: 30vh;
+    width: 30vw;
     overflow: show;
     margin: auto;
     top: 0;
@@ -34,12 +35,9 @@
     bottom: 0;
     right: 0;
 
-    width: 64px;
-    height: 64px;
-    border: 8px solid;
-    border-color: #3d5af1 transparent #3d5af1 transparent;
-    border-radius: 50%;
-    animation: spin-anim 1.2s linear infinite;
+    fill: rgba(247, 247, 247, 0.75);
+
+    animation: spin-anim 2.5s linear infinite;
 }
 
 @keyframes spin-anim {
