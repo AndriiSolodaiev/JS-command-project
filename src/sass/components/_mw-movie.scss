@@ -12,6 +12,7 @@
     background-color: #FFF;
     border: none;
     // border-radius: 10px;
+    transition: visibility (var(--transition-prop)), opacity (var(--transition-prop));
 }
 .mw-movie__btn-close {
     position: absolute;
@@ -120,6 +121,7 @@
             background-color: var(--accent-color);
             border: none;
             filter: none;
+            transition: background-color (var(--transition-prop)), border (var(--transition-prop));
         }
 }
 .mw-movie__btn-addqueue {
@@ -138,6 +140,7 @@
             background-color: var(--accent-color);
             border: none;
             filter: none;
+            transition: background-color (var(--transition-prop)), border (var(--transition-prop));
         }
 }
 @media screen and (min-width: 768px) {
