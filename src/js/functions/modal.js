@@ -1,9 +1,9 @@
 import { onModalLibraryBtnClick } from './onModalLibraryBtnClick';
 import { refs, library, data } from './../refs';
 import { checkModalBtnName } from './checkModalBtnName';
-import { renderMoviesWatchedAndQueue } from './renderMoviesWatchedAndQueue';
 import { watchTrailer } from './trailer';
-import { setMovieGenresNames } from "./card"
+import { setMovieGenresNames } from "./card";
+import { renderLibraryByCloseModal } from './renderLibraryByCloseModal';
 
 export function openModal(event) {
   event.preventDefault();
@@ -109,16 +109,11 @@ export function openModal(event) {
         document.removeEventListener('keydown', onEscape)
     }
   }
-  //оновлення вмісту сторінку по закриттю модалки
-  if (refs.openQueueBtnEl) {
-    document.addEventListener('keydown', () => {
-      if (refs.openQueueBtnEl.classList.contains('btn__current')) {
-        renderMoviesWatchedAndQueue(1, 'queueMovies', 'queue');
-      } else {
-        renderMoviesWatchedAndQueue(1, 'watchedMovies', 'watched');
-      }
-    });
-  }
+
+//оновлення вмісту сторінку по закриттю модалки при keydown Esc
+if (refs.openQueueBtnEl) {
+  document.addEventListener('keydown', renderLibraryByCloseModal);
+}
 
 ///////слухач на кнопку закриття
   const closeMovieCard = document.querySelector('[mw-movie-close]');
@@ -127,16 +122,11 @@ export function openModal(event) {
     modalMovieCard.hidden = true;
     closeMovieCard.removeEventListener('click', onCloseClick);
   }
-  //оновлення вмісту сторінку по закриттю модалки
-  if(refs.openQueueBtnEl) {
-    closeMovieCard.addEventListener("click", () => {
-      if(refs.openQueueBtnEl.classList.contains('btn__current')) {
-        renderMoviesWatchedAndQueue('queueMovies', 'queue');
-      } else {
-        renderMoviesWatchedAndQueue('watchedMovies', 'watched');
-      }
-    });
-  }
+
+//оновлення вмісту сторінкИ по закриттю модалки при кріці на Х
+if(refs.openQueueBtnEl) {
+  closeMovieCard.addEventListener("click", renderLibraryByCloseModal);
+}
 
 //////слухач на клік поза карткою
   document.addEventListener("click", onOuterClick); 
@@ -146,67 +136,69 @@ export function openModal(event) {
       document.removeEventListener("click", onOuterClick);
     };
   }
-  if(refs.openQueueBtnEl) {
-    closeMovieCard.addEventListener("click", () => {
-      if(refs.openQueueBtnEl.classList.contains('btn__current')) {
-        renderMoviesWatchedAndQueue('queueMovies', 'queue');
-      } else {
-        renderMoviesWatchedAndQueue('watchedMovies', 'watched');
-      }
-    });
-  }
+
+//оновлення вмісту сторінку по закриттю модалки при кліці на backdrop
+if(refs.openQueueBtnEl) {
+  document.addEventListener("click", (event) => {
+    if (event.target === modalMovieCard) {
+      renderLibraryByCloseModal();
+    };
+  });
+};
+
 
 //////Трейлер
   watchTrailer(movieId);
 
 ////////Олександра
-  const modalRefs = {
-    addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
-    addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
-  };
+const modalRefs = {
+  addToWatchedBtnEl: document.querySelector('.mw-movie__btn-addwatch'),
+  addToQueueBtnEl: document.querySelector('.mw-movie__btn-addqueue'),
+};
 
-  if (JSON.parse(localStorage.getItem('watchedMovies'))) {
-    library.watchedMovies = JSON.parse(localStorage.getItem('watchedMovies'));
-  }
+if (JSON.parse(localStorage.getItem('watchedMovies'))) {
+  library.watchedMovies = JSON.parse(localStorage.getItem('watchedMovies'));
+}
 
-  if (JSON.parse(localStorage.getItem('queueMovies'))) {
-    library.queueMovies = JSON.parse(localStorage.getItem('queueMovies'));
-  }
+if (JSON.parse(localStorage.getItem('queueMovies'))) {
+  library.queueMovies = JSON.parse(localStorage.getItem('queueMovies'));
+}
 
-  checkModalBtnName(
+//перевірка чи є фільм у watched/queue, відповідно цьому змінюється текст кнопки
+checkModalBtnName(
+  movieCardObj,
+  modalRefs.addToWatchedBtnEl,
+  'watched',
+  'watchedMovies'
+);
+
+checkModalBtnName(
+  movieCardObj,
+  modalRefs.addToQueueBtnEl,
+  'queue',
+  'queueMovies'
+);
+
+// слухачі подій на кнопки add to watched, add to queue => додаванн/видалення фільму з бібліотеки
+modalRefs.addToWatchedBtnEl.addEventListener('click', () =>
+  onModalLibraryBtnClick(
     movieCardObj,
+    library.watchedMovies,
     modalRefs.addToWatchedBtnEl,
     'watched',
     'watchedMovies'
-  );
+  )
+);
 
-  checkModalBtnName(
+modalRefs.addToQueueBtnEl.addEventListener('click', () =>
+  onModalLibraryBtnClick(
     movieCardObj,
+    library.queueMovies,
     modalRefs.addToQueueBtnEl,
     'queue',
     'queueMovies'
-  );
-
-  // слухачі подій на кнопки add to watched, add to queue
-  modalRefs.addToWatchedBtnEl.addEventListener('click', () =>
-    onModalLibraryBtnClick(
-      movieCardObj,
-      library.watchedMovies,
-      modalRefs.addToWatchedBtnEl,
-      'watched',
-      'watchedMovies'
-    )
-  );
-
-  modalRefs.addToQueueBtnEl.addEventListener('click', () =>
-    onModalLibraryBtnClick(
-      movieCardObj,
-      library.queueMovies,
-      modalRefs.addToQueueBtnEl,
-      'queue',
-      'queueMovies'
-    )
-  );
+  )
+);
 }
 /////////////
 // Доробити:

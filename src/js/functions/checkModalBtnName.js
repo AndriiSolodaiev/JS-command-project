@@ -1,6 +1,3 @@
-//додається при відкритті модалки, перевіряє чи є фільм у watched/queue,
-//відповідно цьому змінює текст кнопки
-
 export function checkModalBtnName(currentMovie, btnEl, action, storageKey) {
     const storageArr = JSON.parse(localStorage.getItem(storageKey));
     

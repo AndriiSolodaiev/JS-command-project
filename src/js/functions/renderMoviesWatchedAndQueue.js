@@ -11,7 +11,7 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
 
   data.typePagination = typeOfLibrary;
 
-  if (moviesArr.length === 0) {
+  if (!moviesArr || moviesArr.length === 0) {
     refs.libraryMessageContainerEl.innerHTML = `
             <p class='library-message__text'>
                 There's nothing here yet...
@@ -40,7 +40,6 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     
     localStorage.setItem('currentMovies', JSON.stringify(moviesArrOnPage));
     hideLoader(); // 'switch off' loader-spinner if successful
-
   }
   // hideLoader(); // 'switch off' loader-spinner if successful
 }
