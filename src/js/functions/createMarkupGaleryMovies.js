@@ -33,13 +33,15 @@ export async function renderTrendingMoviesPerDay(page) {
     data.typePagination = 'trending';
     markupPagination();
 
+
     localStorage.setItem('currentMovies', JSON.stringify(results));
 
-    hideLoader(); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+
     return;
   } catch {
     fetchError();
-    hideLoader(); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
   }
 }
 function fetchError() {
