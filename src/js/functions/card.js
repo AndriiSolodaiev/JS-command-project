@@ -50,7 +50,7 @@ export function createMoviesCardMarkup(movies) {
             
 };
 
-function setMovieGenresNames(array) {
+export function setMovieGenresNames(array) {
   const savedGenres = localStorage.getItem("genres");
 const parsedGenres = JSON.parse(savedGenres);
   let genresCard = array.map(element => {
