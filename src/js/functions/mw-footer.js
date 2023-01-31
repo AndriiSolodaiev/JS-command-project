@@ -11,7 +11,6 @@ export function onOpenModalFooterClick() {
 export function onEscPress(evt) {
     if (evt.code === "Escape") {
         onCloseModalFooterClick()
-        console.log(evt.code)
         };
 }
 

@@ -20,7 +20,7 @@ export function openModal(event) {
 
   const movieStorageArr = JSON.parse(localStorage.getItem("currentMovies"))
   let movieCardObj = movieStorageArr.find(movie => movie.id === Number(movieId))
-  console.log(movieCardObj)
+ 
 
 
 

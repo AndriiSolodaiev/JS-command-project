@@ -8,7 +8,6 @@ let trailer;
 ///// Click event listener /////
 export function watchTrailer(id)
 {
-  console.log(id);
 
   fetchTrailer(id)
     .then(
@@ -25,7 +24,6 @@ export function watchTrailer(id)
 
 ///// Fetch movie by ID /////
 function fetchTrailer(movieId) {
-   console.log(movieId)
   return axios
     .get(
       `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`,
@@ -41,17 +39,17 @@ function fetchTrailer(movieId) {
 
 function renderTrailer(data) {
   let key = '';
-  // console.log('Ключ', key)
+  
   const openKey = data.find((e) => e.key);
 
   if (!openKey) {
     document.querySelector('.btn-trailer').classList.add('visually-hidden')
-    // console.log('Ключа нема')
+    
     return
   } else {
     key = openKey.key
   }
-//  console.log('Ключ 1', key)
+
   return key;
 }
 
@@ -60,7 +58,7 @@ trailer = basicLightbox.create(`<iframe width="320" height="240" src='https://ww
 
   setTimeout(() => {
     const trailerBtn = document.querySelector('.mw-movie__image');
-    console.log(trailerBtn)
+    
     trailerBtn.addEventListener('click', () => {
      
        trailer.show()
