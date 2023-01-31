@@ -21,7 +21,8 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     data.totalPage = 0;
     data.page = 0;
     markupPagination();
-    hideLoader(); // 'switch off' loader-spinner if successful
+    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
+
   } else {
     const moviesOnPage = 20;
     let moviesArrOnPage = moviesArr.slice(
@@ -39,9 +40,8 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     markupPagination();
     
     localStorage.setItem('currentMovies', JSON.stringify(moviesArrOnPage));
-    hideLoader(); // 'switch off' loader-spinner if successful
+    setTimeout(hideLoader, 1500); // 'switch off' loader-spinner
   }
-  // hideLoader(); // 'switch off' loader-spinner if successful
 }
 
 //storageKey - 'watchedMovies' or 'queueMovies'
