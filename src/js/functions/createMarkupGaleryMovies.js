@@ -20,10 +20,11 @@ export function createMarkupGaleryMovies(arr) {
 
 export async function renderTrendingMoviesPerDay(page) {
   try {
-    showLoader(); // 'switch on' loader-spinner
-
     const { total_pages, results } = await fetchTrendingMoviesPerDay(page);
     const markup = await createMarkupGaleryMovies(results);
+
+    showLoader(); // 'switch on' loader-spinner
+
     refs.errorMessage.innerHTML = '';
     refs.moviesCollection.innerHTML = await markup;
 

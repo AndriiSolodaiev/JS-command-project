@@ -2,8 +2,11 @@ import { slice } from 'lodash';
 import { refs, data } from '../refs';
 import { createMarkupMovies } from './createMarkupMovies';
 import { markupPagination } from './pagination';
+import { showLoader, hideLoader } from './loader';
 
 export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
+  showLoader(); // 'switch on' loader-spinner
+
   const moviesArr = JSON.parse(localStorage.getItem(storageKey));
 
   data.typePagination = typeOfLibrary;
@@ -18,6 +21,7 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     data.totalPage = 0;
     data.page = 0;
     markupPagination();
+    hideLoader(); // 'switch off' loader-spinner if successful
   } else {
     const moviesOnPage = 20;
     let moviesArrOnPage = moviesArr.slice(
@@ -35,7 +39,10 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
     markupPagination();
     
     localStorage.setItem('currentMovies', JSON.stringify(moviesArrOnPage));
+    hideLoader(); // 'switch off' loader-spinner if successful
+
   }
+  // hideLoader(); // 'switch off' loader-spinner if successful
 }
 
 //storageKey - 'watchedMovies' or 'queueMovies'
