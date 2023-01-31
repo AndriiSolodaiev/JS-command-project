@@ -1,3 +1,6 @@
+import { refs } from "../refs";
+import { renderLibraryByCloseModal } from "./renderLibraryByCloseModal";
+
 //додає та видаляє картку з фільмом до watched/queue, 
 //відповідно цьому змінює текст кнопки
 //currentMovie - об'єкт фільма з модалки
@@ -9,6 +12,7 @@ export function onModalLibraryBtnClick(currentMovie, libraryArr, btnEl, action, 
     if(btnEl.textContent === `Add to ${action}`) {
         libraryArr.push(currentMovie);
         btnEl.textContent = `Remove from ${action}`;
+        btnEl.classList.add('mw-movie__current-btn');
     } else {
         for(let i = 0; i <= libraryArr.length; i += 1) {
             if(libraryArr[i].id === currentMovie.id) {
@@ -17,7 +21,13 @@ export function onModalLibraryBtnClick(currentMovie, libraryArr, btnEl, action, 
             }
         }
         btnEl.textContent = `Add to ${action}`;
+        btnEl.classList.remove('mw-movie__current-btn');
     }
 
     localStorage.setItem(storageKey, JSON.stringify(libraryArr));
+
+    //оновлення вмісту сторінкИ 
+    if(refs.openQueueBtnEl) {
+        renderLibraryByCloseModal();
+    }
 }
