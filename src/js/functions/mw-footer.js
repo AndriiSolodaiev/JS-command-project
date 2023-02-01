@@ -46,14 +46,14 @@ const team = [
     },
     {
         name: 'Oleksandra Kryvobok',
-        work: 'Rendering library’s movies, adding the functionality of the modal window’s buttons ("add to watched", "add to queue")',
+        work: 'Implemented of adding and rendering movies to my library',
         img: 'https://i.postimg.cc/9QkYzvw1/Oleksandra-Kryvobok.jpg',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/oleksandra-kryvobok-67527222a/',
          github: 'https://github.com/OleksandraKryvobok'
     },
     {
         name: 'Kateryna Pylypets',
-        work: 'Fetch and render popular movies on the main page, fetch and create genres object  by ID',
+        work: 'Fetch and render popular movies, fetch and create genres object  by ID',
         img: 'https://i.postimg.cc/GtzkRN1F/Kateryna-Pylypec.jpg',
         linkedin: 'https://www.linkedin.com/in/kateryna-pylypets-b07540264/',
          github: 'https://github.com/KaterinaPilipets'
@@ -62,7 +62,7 @@ const team = [
         name: 'Lyudmila Maksymenko',
         work: 'Development of the pagination algorithm',
         img: 'https://i.postimg.cc/1X1WXbTb/Lyudmila-Maksymenko.jpg',
-        linkedin: 'https://www.linkedin.com/in/lyudmila-maksymenko-bb746a207/',
+        linkedin: 'https://www.linkedin.com/in/liudmyla-fesenko-58a579188/',
          github: 'https://github.com/LyudmilaMax'
     },
     {
@@ -76,7 +76,7 @@ const team = [
         name: 'Vasyl Horaichuk',
         work: 'Development of the layout header and box for movies. Naming team.',
         img: 'https://i.postimg.cc/DzsL0mTy/Vasyl-Horaichuk.jpg',
-        linkedin: '',
+        linkedin: ' https://www.linkedin.com/in/vasyl-horaichuk-768170bb/',
          github: 'https://github.com/vasyl-horaichuk'
     },
     {
@@ -92,7 +92,7 @@ const team = [
         name: 'Anastasiia Oliinyk',
         work: 'Card template and showing the trailer',
         img: 'https://i.postimg.cc/tCxXL6tT/Anastasiia-Oliinyk.jpg',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/mwlite/in/anastasiia-oliinyk-572a80242',
          github: 'https://github.com/Miss-Anastasiia'
     },
        
@@ -100,14 +100,14 @@ const team = [
         name: 'Kostiantyn Chernetskyi',
         work: 'Modal window',
         img: 'https://i.postimg.cc/44vPwLjN/Kostiantyn-Chernetskyi.jpg',
-        linkedin:'',
+        linkedin:'https://www.linkedin.com/in/chernetskyi-kostiantyn-5028b5263/',
         github: 'https://github.com/kostya3004'   
     },
     {
         name: 'Nina Slominska',
         work: 'Development of footer, MW footer, team logo',
         img: 'https://i.postimg.cc/6q6vM0Gy/Nina-Slominska.jpg',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/nina-slominska-017553264/',
         github:'https://github.com/NinaSlominska'
     },     
 ]
