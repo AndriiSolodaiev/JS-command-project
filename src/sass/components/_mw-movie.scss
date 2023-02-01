@@ -17,8 +17,9 @@
     border: none;
     transform: translate(-50%, -50%) scale(1);
     // border-radius: 10px;
-
+    transition: visibility (var(--transition-prop)), opacity (var(--transition-prop));
     z-index: 150;
+
 }
 .mw-movie__btn-close {
     position: absolute;
@@ -46,9 +47,11 @@
     margin-bottom: 20px;
     border-radius: 5px;
     cursor: pointer;
+    // object-fit: contain;
 }
 .mw-movie__info-table {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    /// margin-bottom має бути 20, пишу 16 бо додав відступи між елементами тиблиці по 4 пікселя
     width: 100%;
     border-collapse: separate;
         &:not(:last-child){
@@ -71,6 +74,7 @@
     font-size: 12px;
     line-height: 167%;
     margin-bottom: 20px;
+    overflow-y: auto;
 }
 .mw-movie__info-table-rating {
     background-color: #FF6B01;
@@ -118,9 +122,11 @@
     background-color: #FFF;
     // padding: 0 27px;  
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
         &:hover {
             transform: scale(1.05);
             transition-duration: 80ms;
+
         }
 }
 .mw-movie__btn-addqueue {
@@ -136,6 +142,7 @@
         &:hover {
             transform: scale(1.05);
             transition-duration: 80ms;
+
         }
 }
 @media screen and (min-width: 768px) {
@@ -153,6 +160,9 @@
         max-width: 264px ;
         max-height: 100%;
         margin-bottom: 0px;
+    }
+    .mw-movie__info-table-description {
+        max-height: 210px;
     }
     .mw-movie__btn-list {
         display: flex;

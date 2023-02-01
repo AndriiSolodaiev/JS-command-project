@@ -14,7 +14,10 @@ export function openModal(event) {
   return;}
 //////контейнер куди будемо вставляти модалку. також по кліку на ньому буде закриття модалки.
   const modalMovieCard = document.querySelector('[mw-movie-card]');
-  modalMovieCard.classList.remove("is-hidden");
+
+  modalMovieCard.classList.remove("is-hidden")
+  
+
 
 ////витягаємо потрібний нам об'єкт з масиву об'єктів
   let movieId = event.target.closest("li").dataset.id
@@ -25,6 +28,20 @@ export function openModal(event) {
 //Трейлер
   watchTrailer(movieId);
 
+////перевірка чи має фільм середню оцінку, якщо ні то N/A  
+  let voteAverage = movieCardObj.vote_average;
+  if (voteAverage === 0.0) {
+    voteAverage = `N/A`
+  } else {
+    voteAverage = movieCardObj.vote_average.toFixed(1)
+  }
+////перевірка чи має фільм голоси, якщо ні то N/A 
+  let voteCount = movieCardObj.vote_count;
+  if (voteCount === 0.0) {
+    voteCount = `N/A`
+  } else {
+    voteCount = movieCardObj.vote_count
+  }
 
 
     
@@ -67,11 +84,9 @@ let modalPoster = ``;
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Vote / Votes</td>
           <td class="mw-movie__info-table-row-data">
-            <span class="mw-movie__info-table-rating">${movieCardObj.vote_average.toFixed(
-              1
-            )}</span
+            <span class="mw-movie__info-table-rating">${voteAverage}</span
             ><span class="mw-movie__info-table-slash"> / </span> <span class="mw-movie__info-table-votes">${
-              movieCardObj.vote_count
+              voteCount
             }</span>
           </td>
         </tr>
@@ -120,7 +135,9 @@ let modalPoster = ``;
   const closeMovieCard = document.querySelector('[mw-movie-close]');
   closeMovieCard.addEventListener('click', onCloseClick);
   function onCloseClick() {
-    modalMovieCard.classList.add("is-hidden");
+
+      modalMovieCard.classList.add("is-hidden");
+
     closeMovieCard.removeEventListener('click', onCloseClick);
   }
 
@@ -128,7 +145,9 @@ let modalPoster = ``;
   document.addEventListener("click", onOuterClick); 
   function onOuterClick(event) {
     if (event.target === modalMovieCard) {
-      modalMovieCard.classList.add("is-hidden");
+
+        modalMovieCard.classList.add("is-hidden");
+
       document.removeEventListener("click", onOuterClick);
     };
   }
