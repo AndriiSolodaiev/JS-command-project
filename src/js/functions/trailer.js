@@ -40,7 +40,7 @@ function fetchTrailer(movieId) {
 function renderTrailer(data) {
   let key = '';
   
-  const openKey = data.find((e) => e.key);
+    const openKey = data.find((e) => e.type === 'Trailer');
 
   if (!openKey) {
     document.querySelector('.mw-movie__poster').classList.remove('mw-movie__poster');
