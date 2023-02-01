@@ -54,9 +54,10 @@ let modalPoster = ``;
   ////формуємо модалку з об'єкта фільма
   modalMovieCard.innerHTML = `<div class="mw-movie container">
     <button class="mw-movie__btn-close" type="button" mw-movie-close>
-      <svg class="mw-movie__icon-close">
-        <path d="M23.733 10.304l-1.504-1.504-5.963 5.963-5.963-5.963-1.504 1.504 5.963 5.963-5.963 5.963 1.504 1.504 5.963-5.963 5.963 5.963 1.504-1.504-5.963-5.963 5.963-5.963z"></path>
-      </svg>
+      <svg class='mw-movie__icon-close' width='30' height='30' viewBox='0 0 30 30'>
+      <path class='mw-movie__path' d='M8 8L22 22' stroke='black' stroke-width='2'></path>
+      <path class='mw-movie__path' d='M8 22L22 8' stroke='black' stroke-width='2'></path>
+    </svg>
     </button>
     <div class="mw-movie__poster">
       <img
@@ -223,4 +224,4 @@ const parsedGenres = JSON.parse(savedGenres);
   return genresCard = ''
   }
   return genresCard.join(', ');  
-} 
+  } 

@@ -1,7 +1,39 @@
+@keyframes icon {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(15deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 .logo {
     display: flex;
     align-items: center;
     height: 35px;
+    
+}
+.logo__icon {
+    stroke: $white;
+        stroke-width: 2.7px;
+        fill: none;
+    animation-name: icon;
+        animation-timing-function: ease;
+        animation-duration: 5000ms;
+        animation-iteration-count: infinite;
 }
 
 .logo__title {
@@ -12,25 +44,16 @@
     line-height: 1.16;
     margin-left: 10px;
 
-    &:hover,
-    &:focus {
-        color: $red;
-        transition: $transition;
-    }
+
 
     @media screen and (max-width: 767px) {
         display: none;
     }
 }
 
-.logo > .logo__icon {
+.logo:hover > .logo__icon {
 
-    stroke: $white;
-    stroke-width: 2.7px;
-    fill: none;
+    stroke: $red;
+    transition: $transition;
 
-    &:hover, &:focus {
-        transition: $transition;
-        stroke: $red;
-    }
 }
