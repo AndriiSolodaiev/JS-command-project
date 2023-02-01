@@ -14,7 +14,7 @@ export function renderMoviesWatchedAndQueue(page, storageKey, typeOfLibrary) {
   if (!moviesArr || moviesArr.length === 0) {
     refs.libraryMessageContainerEl.innerHTML = `
             <p class='library-message__text'>
-                There's nothing here yet...
+                There's nothing here yet... You can add movies from <a href ="./index.html"class="library-message__link">here</a>.
             </p>
         `;
     refs.moviesCollectionLibrary.innerHTML = '';

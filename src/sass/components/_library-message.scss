@@ -1,10 +1,14 @@
 .library-message {
     display: flex;
     justify-content: center;
-    
+    align-items: center;
     font-size: 18px;
 
     @media screen and (min-width: 768px) {
         font-size: 26px;
     }
+}
+.library-message__link {
+    color: var(--accent-color);
+    font-weight: 700;
 }
