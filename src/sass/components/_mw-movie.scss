@@ -17,29 +17,52 @@
 
 }
 .mw-movie__btn-close {
-    position: absolute;
-    background-color: transparent;
-    top: 8px;
-    right: 8px;
+position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
     border: none;
-    padding: 0px;
-    line-height: 0px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: all 0.05s;
+   
 }
 .mw-movie__icon-close {
     width: 30px;
     height: 30px;
 }
+
+.mw-movie__path {
+    transition: all .05s;
+}
+
+.mw-movie__icon-close:hover,
+.mw-movie__icon-close:focus {
+    border-radius: 50%;
+    transform: scale(1.1);
+    background-color: #ff6b01;
+
+    .mw-movie__path {
+        stroke: #FFF;
+    }
+}
 .mw-movie__info-heading {
     font-size: 20px;
     line-height: 115%;
     font-weight: 500;
+    padding-top: 20px;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
 .mw-movie__image {
     max-width: 240px ;
     max-height: 357px;
-    margin-bottom: 20px;
     border-radius: 5px;
     cursor: pointer;
     // object-fit: contain;
@@ -58,6 +81,7 @@
     font-size: 12px;
     line-height: 133%;
     margin-right: 39px;
+    padding-bottom: 20px;
     width: 108px;
 }
 .mw-movie__info-table-row-data {
@@ -68,7 +92,7 @@
 .mw-movie__info-table-description {
     font-size: 12px;
     line-height: 167%;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
     overflow-y: auto;
 }
 .mw-movie__info-table-rating {
@@ -144,11 +168,14 @@
     .mw-movie {
         max-width: 704px;
         // height: fit-content;
-        padding-top: 40px;
+        padding-top: 45px;
         padding-left: 36px;
         padding-right: 72px;
         display: flex;
         gap: 68px;
+    }
+    .mw-movie__info-heading{
+        padding-top: 0;
     }
     .mw-movie__image {
         max-width: 264px ;
@@ -176,19 +203,21 @@
 }
 @media screen and (min-width: 1280px) {
     .mw-movie {
-        max-width: 806px;
+        max-width: 878px;
         // height: fit-content;
         padding-left: 12px;
         padding-right: 12px;
         gap: 16px;
     }
     .mw-movie__image {
-        max-width: 375px;
+        max-width: 330px;
         max-height: 478px;
     }
     .mw-movie__info-heading {
+        
         font-size: 30px;
         line-height: 116%;
+        
     }
     .mw-movie__info-table-row-name {
         width: 152px;

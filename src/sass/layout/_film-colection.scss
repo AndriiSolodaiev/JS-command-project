@@ -2,6 +2,7 @@
   padding: 20px 0 40px 0;
   min-height: 400px;
 
+
   @media screen and (min-width: 768px) {
     padding: 60px 0;
     min-height: 450px;
@@ -34,7 +35,13 @@
     flex-basis: calc(
       (100% - var(--indent) * (var(--items) - 1)) / var(--items)
     );
-  }
+    list-style-type: none;
+    transition-property: transform;
+      transition-duration: .25s;;
+    &:hover,
+    &:focus {
+      transform: scale(1.03);
+    }}
 }
 
 
