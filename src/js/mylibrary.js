@@ -38,3 +38,5 @@ refs.openModalFooter.addEventListener("click", onOpenModalFooterClick);
 refs.closeModalFooter.addEventListener('click', onCloseModalFooterClick);
 refs.modalFooter.addEventListener("click", onBackdropClickToClose);
 
+import { btnUp } from "./functions/btnUpHidden";
+btnUp.addEventListener();

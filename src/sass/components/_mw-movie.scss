@@ -1,7 +1,4 @@
-.is-hidden .mw-movie {
-    transform: translate(-50%, -50%) scale(1.2);
-    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+
 .mw-movie {
     position: absolute;
     width: 100%;
@@ -11,14 +8,11 @@
     overflow: auto;
     top: 50%;
     left: 50%;
-    // transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding-top: 48px;
     padding-bottom: 40px;
     background-color: #FFF;
     border: none;
-    transform: translate(-50%, -50%) scale(1);
-    // border-radius: 10px;
-    transition: visibility (var(--transition-prop)), opacity (var(--transition-prop));
     z-index: 150;
 
 }

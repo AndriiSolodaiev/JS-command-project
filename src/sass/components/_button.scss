@@ -39,19 +39,20 @@
   border: none;
 }
 
-.up-btn {
+.btn-up {
   //   border: 1px solid $orange-button;
   // color: $white;
   height: 50px;
   width: 50px;
   padding: 15px;
   text-align: center;
-  background-color: rgba(255, 107, 1, 0.7);
+  background-color: rgba(129, 117, 116, 0.7);
   position: fixed;
   bottom: 20px;
   right: 20px;
   margin-bottom: 0;
   z-index: 25;
+  transition: opacity var(--transition-prop), visibility var(--transition-prop), transform var(--transition-prop);
 
   &:hover,
   &:focus,
@@ -62,7 +63,21 @@
   }
 }
 
-.up-link {
-  //   color: #212121;
-  color: inherit;
+.btn-up_hide {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+}
+.btn-up__icon {
+  position: absolute;
+  width: 30px;
+    height: 30px;
+    left: 9px;
+    top: 9px;
+    fill: #000;
+}
+.btn-up__path {
+  fill: #fff;
+  
 }

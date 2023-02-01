@@ -1,9 +1,3 @@
-
-// import axios from 'axios';
-// export const API_KEY = '064f7e3d0569e2adbfaa0d0f4ed21f86';
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-
-
 import { data } from './refs';
 import { refs } from './refs';
 import { createGenresObj } from './functions/genres';
@@ -26,9 +20,6 @@ window.addEventListener(
 import { renderTrendingMoviesPerDay } from './functions/createMarkupGaleryMovies';
 renderTrendingMoviesPerDay(data.page);
 
-
-
-
 import { openModal } from './functions/modal';
 refs.moviesCollection.addEventListener('click', openModal);
 
@@ -39,3 +30,5 @@ refs.openModalFooter.addEventListener("click", onOpenModalFooterClick);
 refs.closeModalFooter.addEventListener('click', onCloseModalFooterClick);
 refs.modalFooter.addEventListener("click", onBackdropClickToClose);
 
+import { btnUp } from "./functions/btnUpHidden";
+btnUp.addEventListener();
