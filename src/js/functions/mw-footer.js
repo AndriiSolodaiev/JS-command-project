@@ -3,6 +3,7 @@ const { modalFooter, closeModalFooter, openModalFooter } = refs;
     
 
 export function onOpenModalFooterClick() {
+    
     modalFooter.classList.remove("is-hidden")
     document.addEventListener("keydown", onEscPress );
 }
@@ -10,7 +11,6 @@ export function onOpenModalFooterClick() {
 export function onEscPress(evt) {
     if (evt.code === "Escape") {
         onCloseModalFooterClick()
-        console.log(evt.code)
         };
 }
 
@@ -41,6 +41,16 @@ const team = [
         work: 'Scrum | Implementation of Loader (spinner) for asynchronous requests',
         img: 'https://i.postimg.cc/Dw6RDfD0/Maksym-Tulay.jpg'
     },
+    {
+        name: 'Oleksandra Kryvobok',
+        work: 'Rendering library’s movies, adding the functionality of the modal window’s buttons ("add to watched" and "add to queue")',
+        img: 'https://i.postimg.cc/9QkYzvw1/Oleksandra-Kryvobok.jpg'
+    },
+    {
+        name: 'Kateryna Pylypets',
+        work: 'Etch and render popular movies on the main page, fetch and create genres object  by ID',
+        img: 'https://i.postimg.cc/GtzkRN1F/Kateryna-Pylypec.jpg'
+    },
         {
         name: 'Lyudmila Maksymenko',
         work: 'Development of the pagination algorithm',
@@ -51,44 +61,36 @@ const team = [
         work: 'Implement search and display of movies by keyword',
         img: 'https://i.postimg.cc/qMXFhMpw/Liydmila-Fesenko.jpg'
     },
-        {
-        name: 'Anna Belous',
-        work: 'Developer - кнопки "watched" та "queue" - відображаються переглянуті та додані в чергу фільми.',
-        img: 'https://i.postimg.cc/tCySjQFx/Anna-Belous.jpg'
+          {
+        name: 'Vasyl Horaichuk',
+        work: 'Development of the layout header and box for movies. Naming team.',
+        img: 'https://i.postimg.cc/DzsL0mTy/Vasyl-Horaichuk.jpg'
     },
         {
+        name: 'Anna Belous',
+        work: 'Developer, library rendering implementation',
+        img: 'https://i.postimg.cc/tCySjQFx/Anna-Belous.jpg'
+    },
+        
+         
+       {
+        name: 'Anastasiia Oliinyk',
+        work: 'Card template and showing the trailer',
+        img: 'https://i.postimg.cc/tCxXL6tT/Anastasiia-Oliinyk.jpg'
+    },
+       
+  {
         name: 'Kostiantyn Chernetskyi',
         work: 'Modal window',
         img: 'https://i.postimg.cc/44vPwLjN/Kostiantyn-Chernetskyi.jpg'
     },
-        {
-        name: 'Oleksandra Kryvobok',
-        work: 'Rendering library’s movies by pressed buttons “watched”/“queue”. Adding the functionality of the modal window’s buttons ("add to watched" and "add to queue")',
-        img: 'https://i.postimg.cc/9QkYzvw1/Oleksandra-Kryvobok.jpg'
-    }, 
-       {
-        name: 'Anastasiia Oliinyk',
-        work: 'Card template + showing the trailer',
-        img: 'https://i.postimg.cc/tCxXL6tT/Anastasiia-Oliinyk.jpg'
-    },
-       {
-        name: 'Kateryna Pylypets',
-        work: 'Etch and render popular movies on the main page, fetch and create genres object  by ID',
-        img: 'https://i.postimg.cc/GtzkRN1F/Kateryna-Pylypec.jpg'
-    },
-        {
-        name: 'Vasyl Horaichuk',
-        work: 'Development of the layout header and box for movies',
-        img: 'https://i.postimg.cc/DzsL0mTy/Vasyl-Horaichuk.jpg'
-    },
      {
         name: 'Nina Slominska',
-        work: 'Developer - верстка футера, модальне вікно команди.',
+        work: 'Development of footer, MW footer, team logo',
         img: 'https://i.postimg.cc/6q6vM0Gy/Nina-Slominska.jpg'
     },     
 ]
 const modalList = document.querySelector('.team-list')
- let markup = ''
 function markupTeam(team) {
     
      modalList.innerHTML = team.map(el => {

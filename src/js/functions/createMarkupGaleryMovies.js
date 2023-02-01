@@ -20,10 +20,11 @@ export function createMarkupGaleryMovies(arr) {
 
 export async function renderTrendingMoviesPerDay(page) {
   try {
-    showLoader(); // 'switch on' loader-spinner
-
     const { total_pages, results } = await fetchTrendingMoviesPerDay(page);
     const markup = await createMarkupGaleryMovies(results);
+
+    showLoader(); // 'switch on' loader-spinner
+
     refs.errorMessage.innerHTML = '';
     refs.moviesCollection.innerHTML = await markup;
 
@@ -32,13 +33,15 @@ export async function renderTrendingMoviesPerDay(page) {
     data.typePagination = 'trending';
     markupPagination();
 
+
     localStorage.setItem('currentMovies', JSON.stringify(results));
 
-    hideLoader(); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
+
     return;
   } catch {
     fetchError();
-    hideLoader(); // 'switch off' loader-spinner
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
   }
 }
 function fetchError() {

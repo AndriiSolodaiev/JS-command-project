@@ -18,7 +18,7 @@ export async function renderSearchedMovies(page, searchString) {
 
     if (!results.length) {
       showError();
-      hideLoader(); // 'switch off' loader-spinner if error
+      setTimeout(hideLoader, 500); // 'switch off' loader-spinner
       return;
     }
     if (data.searchString !== searchString) {
@@ -36,7 +36,7 @@ export async function renderSearchedMovies(page, searchString) {
     const markup = createMarkupGaleryMovies(results);
     refs.moviesCollection.innerHTML = markup;
 
-    hideLoader(); // 'switch off' loader-spinner if successful
+    setTimeout(hideLoader, 500); // 'switch off' loader-spinner
 
   } catch (error) {
     showError();
