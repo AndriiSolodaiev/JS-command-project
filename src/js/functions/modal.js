@@ -14,7 +14,6 @@ export function openModal(event) {
   return;}
 //////контейнер куди будемо вставляти модалку. також по кліку на ньому буде закриття модалки.
   const modalMovieCard = document.querySelector('[mw-movie-card]');
-
   modalMovieCard.classList.remove("is-hidden")
   
 
@@ -104,7 +103,7 @@ let modalPoster = ``;
         </tr>
         <tr class="mw-movie__info-table-row">
           <td class="mw-movie__info-table-row-name">Genres</td>
-          <td class="mw-movie__info-table-row-data">${setMovieGenresNames(movieCardObj.genre_ids)}</td>
+          <td class="mw-movie__info-table-row-data">${setMovieGenresModal(movieCardObj.genre_ids)}</td>
         </tr>
       </table>
       <p class="mw-movie__info-table-description">
@@ -209,7 +208,19 @@ modalRefs.addToQueueBtnEl.addEventListener('click', () =>
 // Доробити:
 // --0. Додати жанри
 // --1. зняти слухач подій з escape (зняв усі слухачі закриття)
-// --2. закриття модалки по кліку поза модалкою   
+// --2. закриття модалки по кліку поза модалкою
 // --3. куди ділась svg (закинув інлайн)
 // --4. фіналізувати стилі (питання чи кріпити кнопки абсолютами)
 // 5. може якась затримка для завантаженя фото
+
+function setMovieGenresModal(array) {
+  const savedGenres = localStorage.getItem("genres");
+const parsedGenres = JSON.parse(savedGenres);
+  let genresCard = array.map(element => {
+   return parsedGenres[element]
+  })
+  if (!genresCard.length) {
+  return genresCard = ''
+  }
+  return genresCard.join(', ');  
+} 
