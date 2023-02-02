@@ -83,7 +83,7 @@ const team = [
         name: 'Anna Belous',
         work: 'Developer, library rendering implementation',
         img: 'https://i.postimg.cc/tCySjQFx/Anna-Belous.jpg',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/anna-belous-frontend/',
          github: 'https://github.com/annabelous75'
     },
         
